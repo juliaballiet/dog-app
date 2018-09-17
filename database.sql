@@ -4,6 +4,8 @@ CREATE TABLE "users" (
     "password" VARCHAR (1000) NOT NULL
 );
 
+
+
 CREATE TABLE "dogs" (
 	"id" SERIAL PRIMARY KEY,
 	"user_id" integer REFERENCES "users" NOT NULL,
