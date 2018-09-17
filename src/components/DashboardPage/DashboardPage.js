@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Nav from '../../components/Nav/Nav';
+import DogList from '../DogList/DogList';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import { triggerLogout } from '../../redux/actions/loginActions';
@@ -32,15 +33,11 @@ class DashboardPage extends Component {
     if (this.props.user.userName) {
       content = (
         <div>
-          <h1
-            id="welcome"
-          >
+          <h1 id="welcome">
             Welcome, { this.props.user.userName }!
           </h1>
-          <p>Your ID is: {this.props.user.id}</p>
-          <button
-            onClick={this.logout}
-          >
+          <DogList />
+          <button onClick={this.logout}>
             Log Out
           </button>
         </div>
