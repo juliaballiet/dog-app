@@ -21,6 +21,11 @@ class DogList extends Component {
         Axios({
             method: 'GET',
             url: '/dogs'
+        }).then((response) => {
+            console.log('back from server with: ', response.data);
+        }).catch((error) => {
+            console.log('getDogs error: ', error);
+            alert('getDogs error');
         })
     }
 
