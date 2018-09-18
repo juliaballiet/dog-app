@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Nav from '../Nav/Nav';
 import Axios from 'axios';
@@ -13,7 +14,8 @@ class DogProfilePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      edit: false
+      edit: false,
+      url: `/feeding-log/${this.props.match.params.id}`
     }
   }
 
@@ -87,6 +89,9 @@ class DogProfilePage extends Component {
     }).then((response) => {
       console.log('back from /dogs put with: ', response.data);
       this.getDogProfile();
+      this.setState({
+        edit: false
+      })
     }).catch((error) => {
       console.log('handleSendEdit error: ', error);
       alert('handleSendEdit error');
@@ -122,8 +127,10 @@ class DogProfilePage extends Component {
 
     return (
       <div>
+        <Nav />
         {content}
         <button onClick={this.handleEditToggle}>{buttonText}</button>
+        <Link to={this.state.url}>View Logs</Link>
       </div>
     );
   }
