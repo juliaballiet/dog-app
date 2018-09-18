@@ -3,12 +3,14 @@ import user from './userReducer';
 import login from './loginReducer';
 import dogs from './dogsReducer';
 import dogProfile from './dogProfileReducer';
+import feedingLog from './feedingLogReducer';
 
 const store = combineReducers({
   user,
   login,
   dogs,
-  dogProfile
+  dogProfile,
+  feedingLog
 });
 
 export default store;
