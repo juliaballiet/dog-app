@@ -11,8 +11,18 @@ const Nav = () => (
           </Link>
         </li>
         <li>
-          <Link to="/info">
-            Info Page
+          <Link to="/manage-food">
+            Feeding
+          </Link>
+        </li>
+        <li>
+          <Link to="/manage-activities">
+            Exercise
+          </Link>
+        </li>
+        <li>
+          <Link to="/manage-skills">
+            Training
           </Link>
         </li>
       </ul>

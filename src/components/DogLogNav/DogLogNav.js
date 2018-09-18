@@ -31,6 +31,11 @@ class DogLogNav extends Component {
                                 Training Log
               </Link>
                         </li>
+                        <li>
+                            <Link to="/dash">
+                                Home
+              </Link>
+                        </li>
                     </ul>
                 </div>
             </div>
