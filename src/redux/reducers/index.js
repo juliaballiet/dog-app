@@ -5,6 +5,7 @@ import dogs from './dogsReducer';
 import dogProfile from './dogProfileReducer';
 import feedingLog from './feedingLogReducer';
 import exerciseLog from './exerciseLogReducer';
+import trainingLog from './trainingLogReducer';
 
 const store = combineReducers({
   user,
@@ -12,7 +13,8 @@ const store = combineReducers({
   dogs,
   dogProfile,
   feedingLog,
-  exerciseLog
+  exerciseLog,
+  trainingLog
 });
 
 export default store;
