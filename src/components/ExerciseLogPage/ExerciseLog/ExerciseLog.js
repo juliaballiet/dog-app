@@ -38,8 +38,8 @@ class ExerciseLog extends Component {
                 return(
                     <li key={i}>
                         <div>
-                            <h4>{entry.activity} {entry.variety}</h4>
-                            fo {entry.duration} minutes on {entry.date}
+                            <h4>{entry.activity}</h4>
+                            for {entry.duration} minutes on {entry.date}
                             <p>Notes: {entry.notes}</p>
                         </div>
                     </li>
