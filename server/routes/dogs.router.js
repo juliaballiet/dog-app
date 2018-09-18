@@ -2,8 +2,8 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
+/*
+ * GET route
  */
 router.get('/', (req, res) => {
     if (req.isAuthenticated()) {
@@ -27,7 +27,7 @@ router.get('/:id', (req, res) => {
         pool.query(queryText, [req.params.id]).then((results) => {
             res.send(results.rows);
         }).catch((error) => {
-            console.log('/dog/:id GET route error: ', error);
+            console.log('/dogs/:id GET route error: ', error);
             res.sendStatus(500);
         })
     } else {
@@ -41,5 +41,23 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
 
 });
+
+/*
+ * PUT route
+ */
+router.put('/', (req, res) => {
+    if (req.isAuthenticated()) {
+        console.log('/dogs PUT route', req.body);
+        const queryText = `UPDATE "dogs" SET "name" = $1, "breed" = $2, 
+            "weight" = $3, "birthday" = $4 WHERE "id" = $5;`;
+        pool.query(queryText, [req.body.name, req.body.breed, req.body.weight,
+        req.body.birthday, req.body.id]).then((results) => {
+            res.send(results.rows);
+        }).catch((error) => {
+            console.log('/dogs PUT route error: ', error);
+            res.sendStatus(500);
+        })
+    }
+})
 
 module.exports = router;

@@ -82,9 +82,10 @@ class DogProfilePage extends Component {
     console.log('in handleSendEdit');
     Axios({
       method: 'PUT',
-      url: `/dogs/edit/${this.props.match.params.id}`
+      url: '/dogs',
+      data: this.props.dogProfile
     }).then((response) => {
-      console.log('back from /dogs/edit/:id with: ', response.data);
+      console.log('back from /dogs put with: ', response.data);
       this.getDogProfile();
     }).catch((error) => {
       console.log('handleSendEdit error: ', error);
