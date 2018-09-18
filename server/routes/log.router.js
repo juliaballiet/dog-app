@@ -15,7 +15,7 @@ router.get('/feeding/:id', (req, res) => {
         pool.query(queryText, [req.params.id]).then((results) => {
             res.send(results.rows);
         }).catch((error) => {
-            console.log('/dog GET route error: ', error);
+            console.log('/feeding GET route error: ', error);
             res.sendStatus(500);
         })
     } else {
@@ -35,7 +35,27 @@ router.get('/exercise/:id', (req, res) => {
         pool.query(queryText, [req.params.id]).then((results) => {
             res.send(results.rows);
         }).catch((error) => {
-            console.log('/dog GET route error: ', error);
+            console.log('/exercise GET route error: ', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
+});
+
+router.get('/training/:id', (req, res) => {
+    if (req.isAuthenticated()) {
+        console.log('/log/training GET route', req.params.id);
+        const queryText = `SELECT * FROM "training" 
+        JOIN "skills_training" 
+        ON "skills_training"."training_id" = "training"."id"
+        JOIN "skills"
+        ON "skills"."id" = "skills_training"."skill_id"
+        WHERE "dog_id" = $1;`;
+        pool.query(queryText, [req.params.id]).then((results) => {
+            res.send(results.rows);
+        }).catch((error) => {
+            console.log('/training GET route error: ', error);
             res.sendStatus(500);
         })
     } else {
