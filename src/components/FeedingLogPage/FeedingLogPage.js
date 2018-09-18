@@ -2,18 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import DogLogNav from '../DogLogNav/DogLogNav';
-import FeedingLog from '../FeedingLog/FeedingLog';
+import FeedingLog from './FeedingLog/FeedingLog';
 
 const mapStateToProps = state => ({
   user: state.user,
 });
 
 class FeedingLogPage extends Component {
-  // componentDidUpdate() {
-  //   if (!this.props.user.isLoading && this.props.user.userName === null) {
-  //     this.props.history.push('home');
-  //   }
-  // }
 
   render() {
     return (
