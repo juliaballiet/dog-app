@@ -4,6 +4,7 @@ import Axios from 'axios';
 
 const mapStateToProps = state => ({
   user: state.user,
+  feedingLog: state.feedingLog
 });
 
 class FeedingLog extends Component {
@@ -32,7 +33,18 @@ class FeedingLog extends Component {
   render() {
     return (
       <div>
-
+        <ul>
+            {this.props.feedingLog.map((entry) => {
+                return(
+                    <li key={entry.id}>
+                        <div>
+                            <h4>{entry.brand} {entry.variety}</h4>
+                            at {entry.time} on {entry.date}
+                        </div>
+                    </li>
+                );
+            })}
+        </ul>
       </div>
     );
   }

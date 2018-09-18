@@ -8,7 +8,10 @@ const router = express.Router();
 router.get('/feeding/:id', (req, res) => {
     if (req.isAuthenticated()) {
         console.log('/log/feeding GET route', req.params.id);
-        const queryText = `SELECT * FROM "feedings" WHERE "dog_id" = $1;`;
+        const queryText = `SELECT "feedings".*, "foods"."brand", "foods"."variety" 
+            FROM "feedings"
+            JOIN "foods" ON "foods"."id" = "feedings"."food_id"
+            WHERE "dog_id" = $1;`;
         pool.query(queryText, [req.params.id]).then((results) => {
             res.send(results.rows);
         }).catch((error) => {
