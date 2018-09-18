@@ -34,7 +34,7 @@ class DogProfilePage extends Component {
       }
       this.props.dispatch(action);
     }).catch((error) => {
-      console.log('getDogs error: ', error);
+      console.log('getDogProfile error: ', error);
       alert('getDogProfile error');
     })
   }
@@ -76,6 +76,20 @@ class DogProfilePage extends Component {
       payload: event.target.value
     }
     this.props.dispatch(action);
+  }
+
+  handleSendEdit = () => {
+    console.log('in handleSendEdit');
+    Axios({
+      method: 'PUT',
+      url: `/dogs/edit/${this.props.match.params.id}`
+    }).then((response) => {
+      console.log('back from /dogs/edit/:id with: ', response.data);
+      this.getDogProfile();
+    }).catch((error) => {
+      console.log('handleSendEdit error: ', error);
+      alert('handleSendEdit error');
+    })
   }
 
   render() {
