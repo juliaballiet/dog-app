@@ -18,7 +18,21 @@ router.get('/', (req, res) => {
     } else {
         res.sendStatus(403);
     }
+});
 
+router.get('/:id', (req, res) => {
+    if (req.isAuthenticated()) {
+        console.log('/dogs/:id GET route', req.params.id);
+        const queryText = `SELECT * FROM "dogs" WHERE "id" = $1;`;
+        pool.query(queryText, [req.params.id]).then((results) => {
+            res.send(results.rows);
+        }).catch((error) => {
+            console.log('/dog/:id GET route error: ', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
 });
 
 /**

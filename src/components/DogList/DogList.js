@@ -9,6 +9,7 @@ import Axios from 'axios';
 
 const mapStateToProps = state => ({
     user: state.user,
+    dogs: state.dogs
 });
 
 class DogList extends Component {
@@ -23,6 +24,11 @@ class DogList extends Component {
             url: '/dogs'
         }).then((response) => {
             console.log('back from server with: ', response.data);
+            let action = {
+                type: 'DOGS_LIST',
+                payload: response.data
+            }
+            this.props.dispatch(action);
         }).catch((error) => {
             console.log('getDogs error: ', error);
             alert('getDogs error');
@@ -38,7 +44,13 @@ class DogList extends Component {
     render() {
         return (
             <div>
-                <DogListItem />
+                <ul>
+                    {this.props.dogs.map((dog) => {
+                        return(
+                            <DogListItem key={dog.id} dog={dog} />
+                        )
+                    })}
+                </ul>
             </div>
         );
     }
