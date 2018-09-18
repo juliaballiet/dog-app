@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Nav from '../Nav/Nav';
-import { USER_ACTIONS } from '../../redux/actions/userActions';
+import DogLogNav from '../DogLogNav/DogLogNav';
+import TrainingLog from './TrainingLog/TrainingLog';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -18,7 +18,8 @@ class TrainingLogPage extends Component {
   render() {
     return (
       <div>
-        
+        <DogLogNav id={this.props.match.params.id} />
+        <TrainingLog id={this.props.match.params.id} />
       </div>
     );
   }

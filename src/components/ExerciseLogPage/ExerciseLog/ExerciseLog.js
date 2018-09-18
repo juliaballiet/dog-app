@@ -4,29 +4,29 @@ import Axios from 'axios';
 
 const mapStateToProps = state => ({
   user: state.user,
-  activityLog: state.activityLog
+  exerciseLog: state.exerciseLog
 });
 
-class ActivityLog extends Component {
+class ExerciseLog extends Component {
     componentDidMount = () => {
-        this.getActivityLog();
+        this.getExerciseLog();
     }
 
-    getActivityLog = () => {
-        console.log('in getActivityLog');
+    getExerciseLog = () => {
+        console.log('in getExerciseLog');
         Axios({
             method: 'GET',
-            url: '/log/activity/' + this.props.id
+            url: '/log/exercise/' + this.props.id
         }).then((response) => {
-            console.log('back from getActivityLog with: ', response.data);
+            console.log('back from getExerciseLog with: ', response.data);
             let action = {
-                type: 'ACTIVITY_LOG',
+                type: 'EXERCISE_LOG',
                 payload: response.data
             }
             this.props.dispatch(action);
         }).catch((error) => {
-            console.log('getActivityLog error: ', error);
-            alert('getActivityLog error');
+            console.log('getExerciseLog error: ', error);
+            alert('getExerciseLog error');
           })
     }
 
@@ -34,12 +34,12 @@ class ActivityLog extends Component {
     return (
       <div>
         <ul>
-            {this.props.activityLog.map((entry) => {
+            {this.props.exerciseLog.map((entry, i) => {
                 return(
-                    <li key={entry.id}>
+                    <li key={i}>
                         <div>
                             <h4>{entry.activity} {entry.variety}</h4>
-                            at {entry.time} on {entry.date}
+                            fo {entry.duration} minutes on {entry.date}
                             <p>Notes: {entry.notes}</p>
                         </div>
                     </li>
@@ -52,4 +52,4 @@ class ActivityLog extends Component {
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(ActivityLog);
+export default connect(mapStateToProps)(ExerciseLog);

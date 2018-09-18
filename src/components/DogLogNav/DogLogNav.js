@@ -6,7 +6,7 @@ class DogLogNav extends Component {
         super(props);
         this.state = {
             feedingUrl: `/feeding-log/${this.props.id}`,
-            activityUrl: `/activity-log/${this.props.id}`,
+            exerciseUrl: `/exercise-log/${this.props.id}`,
             trainingUrl: `/training-log/${this.props.id}`
         }
     }
@@ -22,8 +22,8 @@ class DogLogNav extends Component {
               </Link>
                         </li>
                         <li>
-                            <Link to={this.state.activityUrl}>
-                                Activity Log
+                            <Link to={this.state.exerciseUrl}>
+                                Exercise Log
               </Link>
                         </li>
                         <li>

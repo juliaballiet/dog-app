@@ -1,10 +1,10 @@
-const activityLog = (state = [], action) => {
+const exerciseLog = (state = [], action) => {
     switch (action.type) {
-      case 'ACTIVITY_LOG':
+      case 'EXERCISE_LOG':
         return action.payload
       default:
         return state;
     }
   };
   
-  export default activityLog;
+  export default exerciseLog;
