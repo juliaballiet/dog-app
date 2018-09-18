@@ -31,9 +31,6 @@ class DogListItem extends Component {
                         <h2><Link to={this.state.url}>
                         {this.props.dog.name}
                         </Link></h2>
-                        <p>{this.props.dog.breed}</p>
-                        <p>{this.props.dog.weight} lbs</p>
-                        <p>DOB: {this.props.dog.birthday}</p>
                     </div>
                 </li>
             </div>
