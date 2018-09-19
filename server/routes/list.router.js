@@ -55,6 +55,22 @@ router.post('/food', (req, res) => {
     }
 });
 
+router.post('/activities', (req, res) => {
+    if (req.isAuthenticated()) {
+        console.log('/list/activities POST route: ', req.body);
+        const queryText = `INSERT INTO "activities" ("activity", "description", "user_id")
+        VALUES ($1, $2, $3);`;
+        pool.query(queryText, [req.body.activity, req.body.description, req.user.id]).then((results) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log('/activities POST route error: ', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
+});
+
 /*
  * PUT route
  */
