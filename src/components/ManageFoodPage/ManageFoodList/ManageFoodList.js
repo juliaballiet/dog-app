@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Axios from 'axios';
 
 // import ManageFoodListItem from './ManageFoodListItem/ManageFoodListItem';
 
@@ -8,10 +9,21 @@ const mapStateToProps = state => ({
 });
 
 class ManageFoodList extends Component {
-  componentDidUpdate() {
-    if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('home');
-    }
+  componentDidMount() {
+      this.getFoodList();
+  }
+
+  getFoodList = () => {
+      console.log('in getFoodList');
+      Axios({
+          method: 'GET',
+          url: '/list/food'
+      }).then((response) => {
+          console.log('back from /list/food with: ', response.data);
+      }).catch((error) => {
+          console.log('getFoodList error: ', error);
+          alert('getFoodList error');
+      })
   }
 
   render() {
