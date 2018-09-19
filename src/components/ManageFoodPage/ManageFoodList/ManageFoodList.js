@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Nav from '../Nav/Nav';
-import { USER_ACTIONS } from '../../redux/actions/userActions';
+// import ManageFoodListItem from './ManageFoodListItem/ManageFoodListItem';
 
 const mapStateToProps = state => ({
   user: state.user,
 });
 
-class NewExerciseLogPage extends Component {
+class ManageFoodList extends Component {
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push('home');
@@ -18,11 +17,11 @@ class NewExerciseLogPage extends Component {
   render() {
     return (
       <div>
-        
+        <h1>List of foods</h1>
       </div>
     );
   }
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(NewExerciseLogPage);
+export default connect(mapStateToProps)(ManageFoodList);

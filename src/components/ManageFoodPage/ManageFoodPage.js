@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Nav from '../Nav/Nav';
-import { USER_ACTIONS } from '../../redux/actions/userActions';
+import ManageFoodList from './ManageFoodList/ManageFoodList';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -18,7 +19,9 @@ class ManageFoodPage extends Component {
   render() {
     return (
       <div>
-        
+        <Nav />
+        <ManageFoodList />
+        <Link to='/add-food'><button>Add Food</button></Link>
       </div>
     );
   }
