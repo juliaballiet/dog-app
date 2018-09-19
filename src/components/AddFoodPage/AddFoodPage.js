@@ -22,14 +22,15 @@ class AddFoodPage extends Component {
   handleInputChange = (event) => {
     console.log('handleInputChange');
     this.setState({
-      edittedFood: {
-        ...this.state.edittedFood,
+      newFood: {
+        ...this.state.newFood,
         [event.target.name]: event.target.value
       }
     })
   }
 
   handleSubmitNewFood = (event) => {
+    event.preventDefault();
     console.log('in handleSubmitNewFood with: ', this.state.newFood);
     Axios({
       method: 'POST',
@@ -42,7 +43,7 @@ class AddFoodPage extends Component {
     }).catch((error) => {
       console.log('handleFoodEdit error: ', error);
       alert('handleFoodEdit error');
-  })
+    })
   }
 
   render() {

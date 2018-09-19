@@ -23,8 +23,21 @@ router.get('/food', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
-
+router.post('/food', (req, res) => {
+    if (req.isAuthenticated()) {
+        console.log('/list/food POST route: ', req.body);
+        const queryText = `INSERT INTO "foods" ("brand", "variety", "type", "amount", "user_id")
+        VALUES ($1, $2, $3, $4, $5);`;
+        pool.query(queryText, [req.body.brand, req.body.variety, req.body.type,
+        req.body.amount, req.user.id]).then((results) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log('/food POST route error: ', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
 });
 
 /*
