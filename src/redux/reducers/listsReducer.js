@@ -18,7 +18,17 @@ const activities = (state = [], action) => {
   }
 };
 
+const skills = (state = [], action) => {
+  switch (action.type) {
+    case 'SKILLS_LIST':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   food,
-  activities
+  activities,
+  skills
 });

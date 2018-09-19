@@ -35,6 +35,21 @@ router.get('/activities', (req, res) => {
     }
 });
 
+router.get('/skills', (req, res) => {
+    if (req.isAuthenticated()) {
+        console.log('/list/skills GET route', req.user.id);
+        const queryText = `SELECT * FROM "skills" WHERE "user_id" = $1 ORDER BY "id";`;
+        pool.query(queryText, [req.user.id]).then((results) => {
+            res.send(results.rows);
+        }).catch((error) => {
+            console.log('/skills GET route error: ', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
+});
+
 /*
  * POST route template
  */

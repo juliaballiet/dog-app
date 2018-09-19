@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Nav from '../Nav/Nav';
-import { USER_ACTIONS } from '../../redux/actions/userActions';
+import ManageSkillsList from './ManageSkillsList/ManageSkillsList';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -18,7 +19,9 @@ class ManageSkillsPage extends Component {
   render() {
     return (
       <div>
-        
+        <Nav />
+        <ManageSkillsList />
+        <Link to='/add-skill'><button>Add Skill</button></Link>
       </div>
     );
   }
