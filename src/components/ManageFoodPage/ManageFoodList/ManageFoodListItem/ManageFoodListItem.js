@@ -16,6 +16,7 @@ class ManageFoodListItem extends Component {
                 variety: this.props.food.variety,
                 type: this.props.food.type,
                 amount: this.props.food.amount,
+                id: this.props.food.id
             }
         }
     }
