@@ -39,7 +39,7 @@ class ManageFoodList extends Component {
         <ul>
             {this.props.foodList.map((food) => {
                 return(
-                    <ManageFoodListItem key={food.id} food={food} />
+                    <ManageFoodListItem key={food.id} food={food} getFoodList={this.getFoodList} />
                 )
             })}
         </ul>

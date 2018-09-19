@@ -52,6 +52,10 @@ class DogProfilePage extends Component {
     let action = {
       type: 'CHANGE_NAME',
       payload: event.target.value
+      // payload: {
+      //   ...this.props.dogProfile,
+      //   [event.target.name]: event.target.value
+      // }
     }
     this.props.dispatch(action);
   }
