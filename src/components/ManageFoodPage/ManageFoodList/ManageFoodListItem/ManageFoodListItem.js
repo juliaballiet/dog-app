@@ -61,10 +61,10 @@ class ManageFoodListItem extends Component {
         if (this.state.edit) {
             content = (
                 <div>
-                    <h4><input name="brand" onChange={this.handleInputChange} value={this.state.edittedFood.brand}></input> 
-                    <input name="variety" onChange={this.handleInputChange} value={this.state.edittedFood.variety}></input></h4>
-                    <p><input name="type" onChange={this.handleInputChange} value={this.state.edittedFood.type}></input> -- 
-                    <input name="amount" onChange={this.handleInputChange} value={this.state.edittedFood.amount}></input> cups</p>
+                    <h4><input name="brand" onChange={this.handleInputChange} value={this.state.edittedFood.brand} /> 
+                    <input name="variety" onChange={this.handleInputChange} value={this.state.edittedFood.variety} /></h4>
+                    <p><input name="type" onChange={this.handleInputChange} value={this.state.edittedFood.type} /> -- 
+                    <input name="amount" onChange={this.handleInputChange} value={this.state.edittedFood.amount} /> cups</p>
                     <button onClick={this.handleFoodEdit}>confirm edit</button>
                 </div>
             );
