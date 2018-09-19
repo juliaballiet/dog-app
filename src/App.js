@@ -18,7 +18,7 @@ import ManageSkillsPage from './components/ManageSkillsPage/ManageSkillsPage';
 import FeedingLogPage from './components/FeedingLogPage/FeedingLogPage';
 import ExerciseLogPage from './components/ExerciseLogPage/ExerciseLogPage';
 import TrainingLogPage from './components/TrainingLogPage/TrainingLogPage';
-import NewActivityLogPage from './components/NewActivityLogPage/NewActivityLogPage';
+import NewExerciseLogPage from './components/NewExerciseLogPage/NewExerciseLogPage';
 import NewFeedingLogPage from './components/NewFeedingLogPage/NewFeedingLogPage';
 import NewTrainingLogPage from './components/NewTrainingLogPage/NewTrainingLogPage';
 import AddActivityPage from './components/AddActivityPage/AddActivityPage';
@@ -78,8 +78,8 @@ const App = () => (
           component={ManageSkillsPage}
         />
         <Route
-          path="/new-activity"
-          component={NewActivityLogPage}
+          path="/new-exercise"
+          component={NewExerciseLogPage}
         />
         <Route
           path="/new-feeding"

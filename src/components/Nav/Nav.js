@@ -12,17 +12,32 @@ const Nav = () => (
         </li>
         <li>
           <Link to="/manage-food">
-            Feeding
+            Manage Food
           </Link>
         </li>
         <li>
           <Link to="/manage-activities">
-            Exercise
+            Manage Activities
           </Link>
         </li>
         <li>
           <Link to="/manage-skills">
-            Training
+            Manage Skills
+          </Link>
+        </li>
+        <li>
+          <Link to="/new-feeding">
+            New Feeding
+          </Link>
+        </li>
+        <li>
+          <Link to="/new-exercise">
+            New Exercise
+          </Link>
+        </li>
+        <li>
+          <Link to="/manage-skills">
+            New Training
           </Link>
         </li>
       </ul>
