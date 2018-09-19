@@ -20,7 +20,7 @@ router.get('/food', (req, res) => {
     }
 });
 
-/**
+/*
  * POST route template
  */
 router.post('/food', (req, res) => {
