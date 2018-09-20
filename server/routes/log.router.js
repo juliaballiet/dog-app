@@ -66,8 +66,20 @@ router.get('/training/:id', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
-
+router.post('/feeding', (req, res) => {
+    if (req.isAuthenticated()) {
+        console.log('/log/feeding POST with: ', req.body);
+        const queryText = `INSERT INTO "feedings" ("dog_id", "food_id", "date", "time")
+        VALUES ($1, $2, $3, $4);`;
+        pool.query(queryText, [req.body.dog_id, req.body.food_id, req.body.date, req.body.time]).then((results) => {
+            res.sendStatus(201);
+        }).catch((error) => {
+            console.log('/feeding POST route error: ', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
 });
 
 /*

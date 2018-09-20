@@ -7,6 +7,7 @@ import feedingLog from './feedingLogReducer';
 import exerciseLog from './exerciseLogReducer';
 import trainingLog from './trainingLogReducer';
 import lists from './listsReducer';
+import logs from './logsReducer';
 
 const store = combineReducers({
   user,
@@ -16,7 +17,8 @@ const store = combineReducers({
   feedingLog,
   exerciseLog,
   trainingLog,
-  lists
+  lists,
+  logs
 });
 
 export default store;
