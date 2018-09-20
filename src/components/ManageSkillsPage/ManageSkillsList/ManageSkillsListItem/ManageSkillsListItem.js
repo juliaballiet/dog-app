@@ -14,7 +14,7 @@ class ManageSkillsListItem extends Component {
             edittedSkill: {
                 name: this.props.skill.name,
                 description: this.props.skill.description,
-                id: this.props.activity.id
+                id: this.props.skill.id
             }
         }
     }

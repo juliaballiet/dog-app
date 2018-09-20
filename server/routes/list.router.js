@@ -114,7 +114,23 @@ router.put('/activities', (req, res) => {
         pool.query(queryText, [req.body.activity, req.body.description, req.body.id]).then((results) => {
             res.sendStatus(200);
         }).catch((error) => {
-            console.log('/food PUT route error: ', error);
+            console.log('/activities PUT route error: ', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
+})
+
+router.put('/skills', (req, res) => {
+    if (req.isAuthenticated()) {
+        console.log('/list/skills PUT route with: ', req.body);
+        const queryText = `UPDATE "skills" SET "name" = $1, "description" = $2 
+        WHERE "id" = $3;`;
+        pool.query(queryText, [req.body.name, req.body.description, req.body.id]).then((results) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log('/skills PUT route error: ', error);
             res.sendStatus(500);
         })
     } else {

@@ -39,7 +39,7 @@ class ManageSkillsList extends Component {
         <ul>
             {this.props.skillsList.map((skill) => {
                 return(
-                    <ManageSkillsListItem key={skill.id} skill={skill} getSkillsList={this.getSkillssList} />
+                    <ManageSkillsListItem key={skill.id} skill={skill} getSkillsList={this.getSkillsList} />
                 )
             })}
         </ul>
