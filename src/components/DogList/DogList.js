@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DogListItem from './DogListItem/DogListItem';
 import Axios from 'axios';
-
-
-// import Nav from '../Nav/Nav';
-// import { USER_ACTIONS } from '../../redux/actions/userActions';
+import { Link } from 'react-router-dom';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -51,6 +48,7 @@ class DogList extends Component {
                         )
                     })}
                 </ul>
+                <Link to="/add-dog">Add New Dog</Link>
             </div>
         );
     }

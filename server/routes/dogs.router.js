@@ -39,7 +39,19 @@ router.get('/:id', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-
+    if (req.isAuthenticated()) {
+        console.log('/dogs POST route', req.body);
+        const queryText = `INSERT INTO "dogs" ("name", "breed", "weight", "birthday", "user_id")
+        VALUES ($1, $2, $3, $4, $5);`;
+        pool.query(queryText, [req.body.name, req.body.breed, req.body.weight, req.body.birthday, req.user.id]).then((results) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log('/dogs POST route error: ', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
 });
 
 /*

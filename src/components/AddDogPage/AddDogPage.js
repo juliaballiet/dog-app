@@ -14,7 +14,7 @@ class AddDogPage extends Component {
     return (
       <div>
         <Nav />
-        <AddDogForm />
+        <AddDogForm history={this.props.history} />
       </div>
     );
   }

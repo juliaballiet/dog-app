@@ -84,15 +84,35 @@ router.post('/feeding', (req, res) => {
 
 router.post('/exercise', (req, res) => {
     if (req.isAuthenticated()) {
-        console.log('/log/exercise POST with: ', req.body);
-        const queryText = `INSERT INTO "exercise" ("dog_id", "date", "duration", "notes")
-        VALUES ($1, $2, $3, $4);`;
-        pool.query(queryText, [req.body.dog_id, req.body.date, req.body.duration, req.body.notes]).then((results) => {
-            res.sendStatus(201);
-        }).catch((error) => {
-            console.log('/exercise POST route error: ', error);
+        (async () => {
+            const client = await pool.connect();
+
+            try {
+                await client.query('BEGIN');
+                let queryText = `INSERT INTO "exercise" ("dog_id", "date", "duration", "notes")
+                VALUES ($1, $2, $3, $4) RETURNING "id";`;
+                const values = [req.body.dog_id, req.body.date, req.body.duration, req.body.notes];
+                const exerciseResult = await client.query(queryText, values);
+                const exerciseId = exerciseResult.rows[0].id;
+
+                queryText = `INSERT INTO "activities_exercise" ("activity_id", "exercise_id")
+                VALUES ($1, $2);`;
+                for (let activity of req.body.activity_id) {
+                    const result = await client.query(queryText, [activity, exerciseId]);
+                }
+                await client.query('COMMIT');
+                res.sendStatus(201);
+            } catch (e) {
+                console.log('ROLLBACK', e);
+                await client.query('ROLLBACK');
+                throw e;
+            } finally {
+                client.release();
+            }
+        })().catch((error) => {
+            console.log('CATCH', error);
             res.sendStatus(500);
-        })
+        });
     } else {
         res.sendStatus(403);
     }

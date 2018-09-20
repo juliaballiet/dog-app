@@ -21,7 +21,7 @@ const newExercise = (state = {}, action) => {
     case 'NEW_EXERCISE_DOG':
       return { ...state, dog_id: action.payload };
     case 'NEW_EXERCISE_ACTIVITY':
-      return { ...state, food_id: action.payload };
+      return { ...state, activity_id: action.payload };
     case 'NEW_EXERCISE_DATE':
       return { ...state, date: action.payload };
     case 'NEW_EXERCISE_DURATION':
