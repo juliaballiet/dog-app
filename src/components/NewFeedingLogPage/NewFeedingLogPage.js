@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Nav from '../Nav/Nav';
-import DogDropdown from '../DogDropdown/DogDropdown';
-import FoodDropdown from '../FoodDropdown/FoodDropdown';
+import DogDropdown from '../Dropdowns/DogDropdown/DogDropdown';
+import FoodDropdown from '../Dropdowns/FoodDropdown/FoodDropdown';
 import Axios from 'axios';
 
 const mapStateToProps = state => ({
