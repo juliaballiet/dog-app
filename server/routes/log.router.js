@@ -82,6 +82,22 @@ router.post('/feeding', (req, res) => {
     }
 });
 
+router.post('/exercise', (req, res) => {
+    if (req.isAuthenticated()) {
+        console.log('/log/exercise POST with: ', req.body);
+        const queryText = `INSERT INTO "exercise" ("dog_id", "date", "duration", "notes")
+        VALUES ($1, $2, $3, $4);`;
+        pool.query(queryText, [req.body.dog_id, req.body.date, req.body.duration, req.body.notes]).then((results) => {
+            res.sendStatus(201);
+        }).catch((error) => {
+            console.log('/exercise POST route error: ', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
+});
+
 /*
  * PUT route
  */
