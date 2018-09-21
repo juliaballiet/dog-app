@@ -38,7 +38,7 @@ const newTraining = (state = {}, action) => {
     case 'NEW_TRAINING_DOG':
       return { ...state, dog_id: action.payload };
     case 'NEW_TRAINING_SKILL':
-      return { ...state, activity_id: action.payload };
+      return { ...state, skill_id: action.payload };
     case 'NEW_TRAINING_DATE':
       return { ...state, date: action.payload };
     case 'NEW_TRAINING_DURATION':
@@ -52,5 +52,6 @@ const newTraining = (state = {}, action) => {
 
 export default combineReducers({
   newFeeding,
-  newExercise
+  newExercise,
+  newTraining
 });

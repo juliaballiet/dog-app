@@ -41,7 +41,7 @@ class SkillDropdown extends Component {
     render() {
         return (
             <select onChange={this.handleSkillChange}>
-                <option default>select activity</option>
+                <option default>select skill</option>
                 {this.props.skills.map((skill) => {
                     return(
                         <option key={skill.id} value={skill.id}>{skill.name}</option>

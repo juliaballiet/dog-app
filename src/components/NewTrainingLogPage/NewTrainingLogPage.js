@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import Axios from 'axios';
 import Nav from '../Nav/Nav';
 import DogDropdown from '../Dropdowns/DogDropdown/DogDropdown';
+import SkillDropdown from '../Dropdowns/SkillDropdown/SkillDropdown';
 
 const mapStateToProps = state => ({
   user: state.user,
+  newTraining: state.logs.newTraining,
 });
 
 class NewTrainingLogPage extends Component {
@@ -39,7 +41,7 @@ class NewTrainingLogPage extends Component {
     Axios({
       method: 'POST',
       url: '/log/training',
-      data: this.props.newExercise
+      data: this.props.newTraining
     }).then((response) => {
       console.log('back from /log/training with: ', response.data);
       alert('new exercise logged!');
@@ -56,7 +58,7 @@ class NewTrainingLogPage extends Component {
         <Nav />
         <form onSubmit={this.handleNewTrainingSubmit}>
           <DogDropdown actionType="NEW_TRAINING_DOG" />
-          <ActivityDropdown />
+          <SkillDropdown />
           <input onChange={this.handleDateChange} type="date" />
           Duration: <input onChange={this.handleDurationChange} /> minutes
           <br /> Notes: <input onChange={this.handleNotesChange} />

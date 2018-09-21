@@ -118,6 +118,42 @@ router.post('/exercise', (req, res) => {
     }
 });
 
+router.post('/training', (req, res) => {
+    if (req.isAuthenticated()) {
+        (async () => {
+            const client = await pool.connect();
+
+            try {
+                await client.query('BEGIN');
+                let queryText = `INSERT INTO "training" ("dog_id", "date", "duration", "notes")
+                VALUES ($1, $2, $3, $4) RETURNING "id";`;
+                const values = [req.body.dog_id, req.body.date, req.body.duration, req.body.notes];
+                const exerciseResult = await client.query(queryText, values);
+                const exerciseId = exerciseResult.rows[0].id;
+
+                queryText = `INSERT INTO "skills_training" ("skill_id", "training_id")
+                VALUES ($1, $2);`;
+                for (let skill of req.body.skill_id) {
+                    const result = await client.query(queryText, [skill, exerciseId]);
+                }
+                await client.query('COMMIT');
+                res.sendStatus(201);
+            } catch (e) {
+                console.log('ROLLBACK', e);
+                await client.query('ROLLBACK');
+                throw e;
+            } finally {
+                client.release();
+            }
+        })().catch((error) => {
+            console.log('CATCH', error);
+            res.sendStatus(500);
+        });
+    } else {
+        res.sendStatus(403);
+    }
+});
+
 /*
  * PUT route
  */

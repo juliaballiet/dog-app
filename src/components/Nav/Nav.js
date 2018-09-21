@@ -36,7 +36,7 @@ const Nav = () => (
           </Link>
         </li>
         <li>
-          <Link to="/manage-skills">
+          <Link to="/new-training">
             New Training
           </Link>
         </li>
