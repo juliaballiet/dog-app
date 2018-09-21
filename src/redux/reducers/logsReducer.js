@@ -33,14 +33,22 @@ const newExercise = (state = {}, action) => {
   }
 };
 
-// const skills = (state = [], action) => {
-//   switch (action.type) {
-//     case 'SKILLS_LIST':
-//       return action.payload;
-//     default:
-//       return state;
-//   }
-// };
+const newTraining = (state = {}, action) => {
+  switch (action.type) {
+    case 'NEW_TRAINING_DOG':
+      return { ...state, dog_id: action.payload };
+    case 'NEW_TRAINING_SKILL':
+      return { ...state, activity_id: action.payload };
+    case 'NEW_TRAINING_DATE':
+      return { ...state, date: action.payload };
+    case 'NEW_TRAINING_DURATION':
+      return { ...state, duration: action.payload };
+    case 'NEW_TRAINING_NOTES':
+      return { ...state, notes: action.payload };
+    default:
+      return state;
+  }
+};
 
 export default combineReducers({
   newFeeding,
