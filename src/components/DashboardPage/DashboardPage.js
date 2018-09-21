@@ -30,7 +30,7 @@ class DashboardPage extends Component {
           <h1 id="welcome">
             Welcome, { this.props.user.userName }!
           </h1>
-          <DogList />
+          <DogList history={this.props.history} />
         </div>
       );
     }

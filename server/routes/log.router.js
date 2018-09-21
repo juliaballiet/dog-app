@@ -23,6 +23,38 @@ router.get('/feeding/:id', (req, res) => {
     }
 });
 
+router.get('/feeding-dates/:id', (req, res) => {
+    if (req.isAuthenticated()) {
+        console.log('/log/feeding-dates GET route', req.params.id);
+        const queryText = `SELECT DISTINCT "date" FROM "feedings" WHERE "dog_id" = $1;`;
+        pool.query(queryText, [req.params.id]).then((results) => {
+            res.send(results.rows);
+        }).catch((error) => {
+            console.log('/feeding-dates GET route error: ', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
+});
+
+router.get('/feeding-entry', (req, res) => {
+    if (req.isAuthenticated()) {
+        console.log('/log/feeding-dates GET route', req.params.id);
+        const queryText = `SELECT * FROM "feedings" 
+        JOIN "foods" ON "foods"."id" = "feedings"."food_id" 
+        WHERE "date" = $1 AND "dog_id" = $2`;
+        pool.query(queryText, [req.query.date, req.query.id]).then((results) => {
+            res.send(results.rows);
+        }).catch((error) => {
+            console.log('/feeding-dates GET route error: ', error);
+            res.sendStatus(500);
+        })
+    } else {
+        res.sendStatus(403);
+    }
+});
+
 router.get('/exercise/:id', (req, res) => {
     if (req.isAuthenticated()) {
         console.log('/log/exercise GET route', req.params.id);
