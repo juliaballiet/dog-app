@@ -6,6 +6,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import Menu from './components/Menu/Menu';
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
@@ -26,10 +27,10 @@ import AddFoodPage from './components/AddFoodPage/AddFoodPage';
 import AddSkillPage from './components/AddSkillPage/AddSkillPage';
 
 import './styles/main.css';
+import DogLogProfileTabs from './components/DogLogNav/DogLogProfileTabs/DogLogProfileTabs';
 
 const App = () => (
   <div>
-    <Header title="Project Base" />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />
@@ -52,6 +53,10 @@ const App = () => (
         <Route
           path="/add-dog"
           component={AddDogPage}
+        />
+        <Route
+          path="/logs/:id"
+          component={DogLogProfileTabs}
         />
         <Route
           path="/feeding-log/:id"

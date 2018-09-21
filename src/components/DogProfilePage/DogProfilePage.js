@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Nav from '../Nav/Nav';
+import Header from '../Header/Header';
 import Axios from 'axios';
 
 const mapStateToProps = state => ({
@@ -15,7 +15,7 @@ class DogProfilePage extends Component {
     super(props);
     this.state = {
       edit: false,
-      url: `/feeding-log/${this.props.match.params.id}`
+      url: `/logs/${this.props.match.params.id}`
     }
   }
 
@@ -131,7 +131,7 @@ class DogProfilePage extends Component {
 
     return (
       <div>
-        <Nav />
+        <Header />
         {content}
         <button onClick={this.handleEditToggle}>{buttonText}</button>
         <Link to={this.state.url}>View Logs</Link>

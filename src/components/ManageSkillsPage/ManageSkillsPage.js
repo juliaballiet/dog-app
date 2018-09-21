@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Nav from '../Nav/Nav';
+import Header from '../Header/Header';
 import ManageSkillsList from './ManageSkillsList/ManageSkillsList';
 
 const mapStateToProps = state => ({
@@ -19,7 +19,7 @@ class ManageSkillsPage extends Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Header />
         <ManageSkillsList />
         <Link to='/add-skill'><button>Add Skill</button></Link>
       </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Nav from '../Nav/Nav';
+import Header from '../Header/Header';
 import ManageFoodList from './ManageFoodList/ManageFoodList';
 
 const mapStateToProps = state => ({
@@ -19,7 +19,7 @@ class ManageFoodPage extends Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Header />
         <ManageFoodList />
         <Link to='/add-food'><button>Add Food</button></Link>
       </div>

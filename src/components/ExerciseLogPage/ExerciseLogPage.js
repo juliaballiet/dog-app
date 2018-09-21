@@ -13,8 +13,8 @@ class ExerciseLogPage extends Component {
   render() {
     return (
       <div>
-        <DogLogNav id={this.props.match.params.id} />
-        <ExerciseLog id={this.props.match.params.id} />
+        <h1>Exercise Log</h1>
+        <ExerciseLog id={this.props.id} />
       </div>
     );
   }

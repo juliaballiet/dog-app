@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Nav from '../Nav/Nav';
+import Header from '../Header/Header';
 import DogDropdown from '../Dropdowns/DogDropdown/DogDropdown';
 import FoodDropdown from '../Dropdowns/FoodDropdown/FoodDropdown';
 import Axios from 'axios';
@@ -48,7 +48,7 @@ class NewFeedingLogPage extends Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Header />
         <form onSubmit={this.handleNewFeedingSubmit}>
           <DogDropdown actionType="NEW_FEEDING_DOG" />
           <FoodDropdown />

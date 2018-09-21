@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-import Nav from '../../components/Nav/Nav';
+import Header from '../Header/Header';
 import DogList from '../DogList/DogList';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
-import { triggerLogout } from '../../redux/actions/loginActions';
 
 
 const mapStateToProps = state => ({
@@ -23,10 +21,6 @@ class DashboardPage extends Component {
     }
   }
 
-  logout = () => {
-    this.props.dispatch(triggerLogout());
-  }
-
   render() {
     let content = null;
 
@@ -37,16 +31,13 @@ class DashboardPage extends Component {
             Welcome, { this.props.user.userName }!
           </h1>
           <DogList />
-          <button onClick={this.logout}>
-            Log Out
-          </button>
         </div>
       );
     }
 
     return (
       <div>
-        <Nav />
+        <Header />
         { content }
       </div>
     );

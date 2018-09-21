@@ -13,8 +13,8 @@ class FeedingLogPage extends Component {
   render() {
     return (
       <div>
-        <DogLogNav id={this.props.match.params.id} />
-        <FeedingLog id={this.props.match.params.id} />
+        <h1>Feeding Log</h1>
+        <FeedingLog id={this.props.id} />
       </div>
     );
   }

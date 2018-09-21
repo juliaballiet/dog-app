@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
-import Nav from '../Nav/Nav';
+import Header from '../Header/Header';
 import DogDropdown from '../Dropdowns/DogDropdown/DogDropdown';
 import SkillDropdown from '../Dropdowns/SkillDropdown/SkillDropdown';
 
@@ -55,7 +55,7 @@ class NewTrainingLogPage extends Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Header />
         <form onSubmit={this.handleNewTrainingSubmit}>
           <DogDropdown actionType="NEW_TRAINING_DOG" />
           <SkillDropdown />
