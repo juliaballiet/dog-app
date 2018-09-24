@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import Chart from '../../Chart/Chart';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -33,7 +34,7 @@ class ExerciseLog extends Component {
   render() {
     return (
       <div>
-        <ul>
+        {/* <ul>
             {this.props.exerciseLog.map((entry, i) => {
                 return(
                     <li key={i}>
@@ -45,7 +46,8 @@ class ExerciseLog extends Component {
                     </li>
                 );
             })}
-        </ul>
+        </ul> */}
+        <Chart />
       </div>
     );
   }

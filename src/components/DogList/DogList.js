@@ -13,6 +13,15 @@ const mapStateToProps = state => ({
     dogs: state.dogs
 });
 
+const styles = theme => ({
+    button: {
+      margin: theme.spacing.unit,
+    },
+    input: {
+      display: 'none',
+    },
+  });
+
 class DogList extends Component {
 
     componentDidMount = () => {

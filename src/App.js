@@ -6,8 +6,6 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import Menu from './components/Menu/Menu';
-import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import DogProfilePage from './components/DogProfilePage/DogProfilePage';
