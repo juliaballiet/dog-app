@@ -7,6 +7,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FeedingLogEntry from './FeedingLogEntry/FeedingLogEntry';
+import moment from 'moment';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -66,7 +67,7 @@ class FeedingLog extends Component {
                     return (
                         <ExpansionPanel key={i}>
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                                {date.date}
+                                {moment(date.date).format('ddd MMM Do YY')}
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
                                 <FeedingLogEntry id={this.props.id} date={date} />

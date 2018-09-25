@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import InputLabel from '@material-ui/core/InputLabel';
+import TextField from '@material-ui/core/TextField';
+
+
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -61,11 +68,11 @@ class ManageFoodListItem extends Component {
         if (this.state.edit) {
             content = (
                 <div>
-                    <h4><input name="brand" onChange={this.handleInputChange} value={this.state.edittedFood.brand} /> 
-                    <input name="variety" onChange={this.handleInputChange} value={this.state.edittedFood.variety} /></h4>
-                    <p><input name="type" onChange={this.handleInputChange} value={this.state.edittedFood.type} /> -- 
-                    <input name="amount" onChange={this.handleInputChange} value={this.state.edittedFood.amount} /> cups</p>
-                    <button onClick={this.handleFoodEdit}>confirm edit</button>
+                    <h4><TextField name="brand" label="brand" onChange={this.handleInputChange} value={this.state.edittedFood.brand} /> 
+                    <TextField name="variety" label="variety" onChange={this.handleInputChange} value={this.state.edittedFood.variety} /></h4>
+                    <p><TextField name="type" label="type" onChange={this.handleInputChange} value={this.state.edittedFood.type} />
+                    <Input name="amount" onChange={this.handleInputChange} value={this.state.edittedFood.amount} endAdornment={<InputAdornment position="end">cups</InputAdornment>} /></p>
+                    <Button onClick={this.handleFoodEdit} variant="contained" color="primary">confirm edit</Button>
                 </div>
             );
             buttonText = 'cancel'
@@ -82,7 +89,7 @@ class ManageFoodListItem extends Component {
         return (
             <li>
                 {content}
-                <br /> <button value={this.props.food.id} onClick={this.handleToggleEdit}>{buttonText}</button>
+                <br /> <Button value={this.props.food.id} onClick={this.handleToggleEdit} variant="contained" color="primary">{buttonText}</Button>
             </li>
         );
     }

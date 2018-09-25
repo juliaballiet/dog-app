@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+
 
 import Header from '../Header/Header';
 import ManageFoodList from './ManageFoodList/ManageFoodList';
@@ -21,7 +23,9 @@ class ManageFoodPage extends Component {
       <div>
         <Header />
         <ManageFoodList />
-        <Link to='/add-food'><button>Add Food</button></Link>
+        <Link to='/add-food'>
+          <Button variant="contained" color="primary">Add Food</Button>
+        </Link>
       </div>
     );
   }

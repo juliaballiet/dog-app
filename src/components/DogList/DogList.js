@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DogListItem from './DogListItem/DogListItem';
 import Axios from 'axios';
-import { withStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-import Icon from '@material-ui/core/Icon';
+import Card from '../Card/Card';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -15,12 +13,12 @@ const mapStateToProps = state => ({
 
 const styles = theme => ({
     button: {
-      margin: theme.spacing.unit,
+        margin: theme.spacing.unit,
     },
     input: {
-      display: 'none',
+        display: 'none',
     },
-  });
+});
 
 class DogList extends Component {
 
@@ -62,13 +60,15 @@ class DogList extends Component {
                 <ul>
                     {this.props.dogs.map((dog) => {
                         return (
-                            <DogListItem key={dog.id} dog={dog} />
+                            <div>
+                                <Card key={dog.id} dog={dog} />
+                            </div>
                         )
                     })}
                 </ul>
                 <Button onClick={this.handleAddDog} variant="contained" color="primary">
-                <AddIcon />
-        <Icon>add</Icon>
+                    <AddIcon />
+                    new dog
                 </Button>
             </div>
         );

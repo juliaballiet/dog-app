@@ -1,0 +1,8 @@
+.header {
+    display: flex;
+    justify-content: start;
+}
+
+.header__title {
+    margin-top: 5px;
+}

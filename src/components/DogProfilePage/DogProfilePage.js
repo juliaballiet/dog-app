@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import './DogProfilePage.css';
 
 import Header from '../Header/Header';
 import Axios from 'axios';
@@ -120,6 +121,7 @@ class DogProfilePage extends Component {
     } else {
       content = (
         <div>
+          <img src={this.props.dogProfile.photo_path} />
           <h2>{this.props.dogProfile.name}</h2>
           <p>{this.props.dogProfile.breed}</p>
           <p>{this.props.dogProfile.weight} lbs</p>

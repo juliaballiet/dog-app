@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
 
 // import Nav from '../Nav/Nav';
 // import { USER_ACTIONS } from '../../redux/actions/userActions';
@@ -10,10 +16,11 @@ const mapStateToProps = state => ({
 });
 
 class DogListItem extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            url: `/dog-profile/${this.props.dog.id}`
+            url: `/dog-profile/${this.props.dog.id}`,
+            image: `/images/${this.props.dog.id}.jpg`,
         }
     }
 
@@ -25,15 +32,29 @@ class DogListItem extends Component {
 
     render() {
         return (
-            <div>
-                <li>
-                    <div>
-                        <h2><Link to={this.state.url}>
-                        {this.props.dog.name}
-                        </Link></h2>
-                    </div>
-                </li>
-            </div>
+            <Link to={this.state.url}>
+                <Card>
+                    <CardActionArea>
+                        <CardMedia
+                            image="/images/shoko.jpg"
+                        />
+                        <CardContent>
+                            <Typography gutterBottom variant="headline" component="h2">
+                                {this.props.dog.name}
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+            </Link>
+            // <div>
+            //     <li>
+            //         <div>
+            //             <h2><Link to={this.state.url}>
+            //             {this.props.dog.name}
+            //             </Link></h2>
+            //         </div>
+            //     </li>
+            // </div>
         );
     }
 }

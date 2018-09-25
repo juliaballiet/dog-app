@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import moment from 'moment';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -38,7 +39,7 @@ class FeedingLogEntry extends Component {
       <ul>
         {this.state.entries.map((entry, i) => {
             return(
-                <li key={i}>{entry.brand} {entry.variety} at {entry.time}</li>
+                <li key={i}>{entry.brand} {entry.variety} at {moment(entry.time, 'h:mm:ss').format('h:mm a')}</li>
             )
         })}
       </ul>

@@ -29,6 +29,9 @@ import DogLogProfileTabs from './components/DogLogNav/DogLogProfileTabs/DogLogPr
 
 const App = () => (
   <div>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Montserrat');
+    </style>
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />
