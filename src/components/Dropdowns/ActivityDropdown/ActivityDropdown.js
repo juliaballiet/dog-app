@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import '../Dropdown.css';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -40,14 +45,23 @@ class ActivityDropdown extends Component {
 
     render() {
         return (
-            <select onChange={this.handleActivityChange}>
-                <option default>select activity</option>
-                {this.props.activities.map((activity) => {
-                    return(
-                        <option key={activity.id} value={activity.id}>{activity.activity}</option>
-                    )
-                })}
-            </select>
+            <FormControl>
+                <InputLabel htmlFor="select-activity">Select Activity</InputLabel>
+                <Select
+                    onChange={this.handleFoodChange}
+                    className="input"
+                    inputProps={{
+                        name: 'select-activity',
+                        id: 'select-activity'
+                    }}
+                >
+                    {this.props.activities.map((activity) => {
+                        return (
+                            <MenuItem key={activity.id} value={activity.id}>{activity.brand} {activity.variety}</MenuItem>
+                        )
+                    })}
+                </Select>
+            </FormControl>
         );
     }
 }

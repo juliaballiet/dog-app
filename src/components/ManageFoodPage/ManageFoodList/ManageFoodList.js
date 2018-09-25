@@ -36,13 +36,13 @@ class ManageFoodList extends Component {
     return (
       <div>
         <h1>List of foods</h1>
-        <ul>
+        <div>
             {this.props.foodList.map((food) => {
                 return(
                     <ManageFoodListItem key={food.id} food={food} getFoodList={this.getFoodList} />
                 )
             })}
-        </ul>
+        </div>
       </div>
     );
   }

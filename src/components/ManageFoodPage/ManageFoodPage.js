@@ -24,7 +24,7 @@ class ManageFoodPage extends Component {
         <Header />
         <ManageFoodList />
         <Link to='/add-food'>
-          <Button variant="contained" color="primary">Add Food</Button>
+          <Button variant="extendedFab" color="primary">Add Food</Button>
         </Link>
       </div>
     );

@@ -4,6 +4,10 @@ import Header from '../Header/Header';
 import DogDropdown from '../Dropdowns/DogDropdown/DogDropdown';
 import FoodDropdown from '../Dropdowns/FoodDropdown/FoodDropdown';
 import Axios from 'axios';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import '../Dropdowns/Dropdown.css';
+
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -51,10 +55,10 @@ class NewFeedingLogPage extends Component {
         <Header />
         <form onSubmit={this.handleNewFeedingSubmit}>
           <DogDropdown actionType="NEW_FEEDING_DOG" />
-          <FoodDropdown />
-          <input onChange={this.handleDateChange} type="date" />
-          <input onChange={this.handleTimeChange} type="time" />
-          <input type="submit" />
+          <br /><FoodDropdown />
+          <br /><TextField className="input" onChange={this.handleDateChange} type="date" />
+          <br /><TextField className="input" onChange={this.handleTimeChange} type="time" />
+          <br /><Button variant="contained" color="primary" type="submit">Submit</Button>
         </form>
       </div>
     );

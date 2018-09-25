@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import '../Dropdown.css';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -40,14 +45,31 @@ class SkillDropdown extends Component {
 
     render() {
         return (
-            <select onChange={this.handleSkillChange}>
-                <option default>select skill</option>
-                {this.props.skills.map((skill) => {
-                    return(
-                        <option key={skill.id} value={skill.id}>{skill.name}</option>
-                    )
-                })}
-            </select>
+            <FormControl>
+                <InputLabel htmlFor="select-skill">Select Skill</InputLabel>
+                <Select
+                    onChange={this.handleFoodChange}
+                    className="input"
+                    inputProps={{
+                        name: 'select-skill',
+                        id: 'select-skill'
+                    }}
+                >
+                    {this.props.skills.map((skill) => {
+                        return (
+                            <MenuItem key={skill.id} value={skill.id}>{skill.name}</MenuItem>
+                        )
+                    })}
+                </Select>
+            </FormControl>
+            // <select onChange={this.handleSkillChange}>
+            //     <option default>select skill</option>
+            //     {this.props.skills.map((skill) => {
+            //         return(
+            //             <option key={skill.id} value={skill.id}>{skill.name}</option>
+            //         )
+            //     })}
+            // </select>
         );
     }
 }

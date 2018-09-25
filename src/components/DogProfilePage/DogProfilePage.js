@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './DogProfilePage.css';
-
-import Header from '../Header/Header';
 import Axios from 'axios';
+import BackButton from '../BackButton/BackButton';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import moment from 'moment';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -105,42 +110,52 @@ class DogProfilePage extends Component {
 
   render() {
     let content = null;
-    let buttonText = '';
 
     if (this.state.edit) {
       content = (
         <div>
-          <p><input onChange={this.handleNameChange} value={this.props.dogProfile.name}/></p>
-          <p><input onChange={this.handleBreedChange} value={this.props.dogProfile.breed}/></p>
-          <p><input onChange={this.handleWeightChange} value={this.props.dogProfile.weight}/> lbs</p>
-          <p>DOB: <input onChange={this.handleBirthdayChange} value={this.props.dogProfile.birthday}/></p>
-          <button onClick={this.handleSendEdit}>confirm changes</button>
+          <img src={this.props.dogProfile.photo_path} />
+          <p><TextField onChange={this.handleNameChange} value={this.props.dogProfile.name} /></p>
+          <p><TextField onChange={this.handleBreedChange} value={this.props.dogProfile.breed} /></p>
+          <p><TextField onChange={this.handleWeightChange} value={this.props.dogProfile.weight}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment variant="filled" position="end">
+                lbs
+              </InputAdornment>
+            ),
+          }} /></p>
+          <p>DOB: <TextField type="date" onChange={this.handleBirthdayChange} defaultValue={moment(this.props.dogProfile.birthday).format('YYYY-MM-DD')} /></p>
+          <Button onClick={this.handleSendEdit}>confirm changes</Button>
+          <Button onClick={this.handleEditToggle}>cancel</Button>
         </div>
       );
-      buttonText = 'cancel';
     } else {
       content = (
         <div>
           <img src={this.props.dogProfile.photo_path} />
-          <h2>{this.props.dogProfile.name}</h2>
-          <p>{this.props.dogProfile.breed}</p>
-          <p>{this.props.dogProfile.weight} lbs</p>
-          <p>DOB: {this.props.dogProfile.birthday}</p>
-        </div>
-      );
-      buttonText = 'edit';
-    }
-
-    return (
+            <h2>
+              {this.props.dogProfile.name}
+              <Icon onClick={this.handleEditToggle} className="edit" style={{ fontSize: 20 }}>edit_icon</Icon>
+            </h2>
+            <p>{this.props.dogProfile.breed}</p>
+            <p>{this.props.dogProfile.weight} lbs</p>
+            <p>DOB: {moment(this.props.dogProfile.birthday).format('MMM D YYYY')}</p>
+            <Link to={this.state.url}>
+              <Button variant="extendedFab" color="primary" >View Logs</Button>
+            </Link>
+          </div>
+          );
+        }
+    
+        return (
       <div>
-        <Header />
-        {content}
-        <button onClick={this.handleEditToggle}>{buttonText}</button>
-        <Link to={this.state.url}>View Logs</Link>
-      </div>
-    );
-  }
-}
-
+            <BackButton url="/dash" />
+            {content}
+          </div>
+          );
+        }
+      }
+      
 // this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(DogProfilePage);

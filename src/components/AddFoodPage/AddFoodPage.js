@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import TextField from '@material-ui/core/TextField';
+import Header from '../Header/Header';
+import Button from '@material-ui/core/Button';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -49,12 +52,13 @@ class AddFoodPage extends Component {
   render() {
     return (
       <div>
+        <Header />
         <form onSubmit={this.handleSubmitNewFood}>
-          <p>Brand: <input name="brand" onChange={this.handleInputChange} /></p>
-          <p>Variety: <input name="variety" onChange={this.handleInputChange} /></p>
-          <p>Type of Food: <input name="type" onChange={this.handleInputChange} /></p>
-          <p>Amount per Feeding: <input name="amount" onChange={this.handleInputChange} /> Cups</p>
-          <input type="submit" />
+          <h2>Add New Food</h2>
+          <p><TextField label="brand" placeholder="Orijen" name="brand" onChange={this.handleInputChange} /></p>
+          <p><TextField label="variety" placeholder="Six Fish" name="variety" onChange={this.handleInputChange} /></p>
+          <p><TextField label="type of food" name="type" placeholder="kibble" onChange={this.handleInputChange} /></p>
+          <Button type="submit" variant="contained" color="primary">Add Food</Button>
         </form>
       </div>
     );

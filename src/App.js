@@ -32,6 +32,7 @@ const App = () => (
     <style>
       @import url('https://fonts.googleapis.com/css?family=Montserrat');
     </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <Router>
       <Switch>
         <Redirect exact from="/" to="/home" />

@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import '../Dropdown.css';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -40,14 +45,23 @@ class DogDropdown extends Component {
 
     render() {
         return (
-            <select onChange={this.handleDogChange}>
-                <option default>select dog</option>
-                {this.props.dogs.map((dog) => {
-                    return (
-                        <option key={dog.id} value={dog.id}>{dog.name}</option>
-                    )
-                })}
-            </select>
+            <FormControl>
+                <InputLabel htmlFor="select-dog">Select Dog</InputLabel>
+                <Select
+                    onChange={this.handleDogChange}
+                    className="input"
+                    inputProps={{
+                        name: 'select-dog',
+                        id: 'select-dog'
+                    }}
+                >
+                    {this.props.dogs.map((dog) => {
+                        return (
+                            <MenuItem key={dog.id} value={dog.id}>{dog.name}</MenuItem>
+                        )
+                    })}
+                </Select>
+            </FormControl>
         );
     }
 }

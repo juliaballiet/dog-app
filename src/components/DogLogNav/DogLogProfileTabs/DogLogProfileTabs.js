@@ -10,6 +10,7 @@ import FeedingLog from '../../FeedingLogPage/FeedingLogPage';
 import ExerciseLog from '../../ExerciseLogPage/ExerciseLogPage';
 import TrainingLog from '../../TrainingLogPage/TrainingLogPage';
 import Header from '../../Header/Header';
+import BackButton from '../../BackButton/BackButton';
 
 function TabContainer({ children, dir }) {
   return (
@@ -45,10 +46,11 @@ class FullWidthTabs extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
+    const url = `/dog-profile/${this.props.match.params.id}`
 
     return (
       <div className={classes.root}>
-        <Header />
+        <BackButton url={url} />
         <AppBar position="static" color="default">
           <Tabs
             value={this.state.value}
@@ -57,9 +59,9 @@ class FullWidthTabs extends React.Component {
             textColor="primary"
             fullWidth
           >
-            <Tab label="Item One" />
-            <Tab label="Item Two" />
-            <Tab label="Item Three" />
+            <Tab label="Feeding" />
+            <Tab label="Exercise" />
+            <Tab label="Training" />
           </Tabs>
         </AppBar>
         <SwipeableViews

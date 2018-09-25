@@ -6,11 +6,26 @@ import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
 
 const mapStateToProps = state => ({
     user: state.user,
+});
+
+const styles = theme => ({
+    root: {
+        width: '100%',
+    },
+    heading: {
+        fontSize: theme.typography.pxToRem(15),
+        fontWeight: theme.typography.fontWeightRegular,
+    },
 });
 
 class ManageFoodListItem extends Component {
@@ -68,29 +83,49 @@ class ManageFoodListItem extends Component {
         if (this.state.edit) {
             content = (
                 <div>
-                    <h4><TextField name="brand" label="brand" onChange={this.handleInputChange} value={this.state.edittedFood.brand} /> 
-                    <TextField name="variety" label="variety" onChange={this.handleInputChange} value={this.state.edittedFood.variety} /></h4>
+                    <h4><TextField name="brand" label="brand" onChange={this.handleInputChange} value={this.state.edittedFood.brand} />
+                        <TextField name="variety" label="variety" onChange={this.handleInputChange} value={this.state.edittedFood.variety} /></h4>
                     <p><TextField name="type" label="type" onChange={this.handleInputChange} value={this.state.edittedFood.type} />
-                    <Input name="amount" onChange={this.handleInputChange} value={this.state.edittedFood.amount} endAdornment={<InputAdornment position="end">cups</InputAdornment>} /></p>
+                        <Input name="amount" onChange={this.handleInputChange} value={this.state.edittedFood.amount} endAdornment={<InputAdornment position="end">cups</InputAdornment>} /></p>
                     <Button onClick={this.handleFoodEdit} variant="contained" color="primary">confirm edit</Button>
+                    <br /><Button
+                    value={this.props.food.id}
+                    onClick={this.handleToggleEdit}
+                    variant="contained"
+                    color="primary">cancel</Button>
                 </div>
             );
             buttonText = 'cancel'
         } else {
             content = (
-                <div>
-                    <h4>{this.props.food.brand} {this.props.food.variety}</h4>
-                    <p>{this.props.food.type} -- {this.props.food.amount} cups</p>
-                </div>
+                // <div>
+                //     <h4>{this.props.food.brand} {this.props.food.variety}</h4>
+                //     <p>{this.props.food.type} -- {this.props.food.amount} cups</p>
+                // </div>
+                <ExpansionPanel>
+                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                        <Typography>{this.props.food.brand} {this.props.food.variety}</Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                        <Typography>
+                            {this.props.food.type} -- {this.props.food.amount} cups
+                            <br /><Button
+                    value={this.props.food.id}
+                    onClick={this.handleToggleEdit}
+                    variant="contained"
+                    color="primary">edit</Button>
+          </Typography>
+                    </ExpansionPanelDetails>
+                </ExpansionPanel>
+
             );
-            buttonText = 'edit'
         }
 
         return (
-            <li>
+            <div>
                 {content}
-                <br /> <Button value={this.props.food.id} onClick={this.handleToggleEdit} variant="contained" color="primary">{buttonText}</Button>
-            </li>
+            </div>
+
         );
     }
 }
