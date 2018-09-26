@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
@@ -23,7 +22,6 @@ class Datepicker extends Component {
                 id="date"
                 label={this.props.label}
                 type="date"
-                defaultValue="2017-05-24"
                 InputLabelProps={{
                   shrink: true,
                 }}

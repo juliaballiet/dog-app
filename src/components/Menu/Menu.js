@@ -47,7 +47,7 @@ class MainMenu extends React.Component {
                     onClose={this.handleClose}
                 >
                     <MenuItem>
-                        <Link to="/dash">
+                        <Link className="link" to="/dash">
                             Home
                         </Link>
                     </MenuItem>

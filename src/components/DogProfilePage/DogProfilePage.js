@@ -114,7 +114,7 @@ class DogProfilePage extends Component {
     if (this.state.edit) {
       content = (
         <div>
-          <img src={this.props.dogProfile.photo_path} />
+          <img src={this.props.dogProfile.photo_path} alt="" />
           <p><TextField onChange={this.handleNameChange} value={this.props.dogProfile.name} /></p>
           <p><TextField onChange={this.handleBreedChange} value={this.props.dogProfile.breed} /></p>
           <p><TextField onChange={this.handleWeightChange} value={this.props.dogProfile.weight}
@@ -133,7 +133,7 @@ class DogProfilePage extends Component {
     } else {
       content = (
         <div>
-          <img src={this.props.dogProfile.photo_path} />
+          <img src={this.props.dogProfile.photo_path} alt="" />
             <h2>
               {this.props.dogProfile.name}
               <Icon onClick={this.handleEditToggle} className="edit" style={{ fontSize: 20 }}>edit_icon</Icon>
@@ -141,7 +141,7 @@ class DogProfilePage extends Component {
             <p>{this.props.dogProfile.breed}</p>
             <p>{this.props.dogProfile.weight} lbs</p>
             <p>DOB: {moment(this.props.dogProfile.birthday).format('MMM D YYYY')}</p>
-            <Link to={this.state.url}>
+            <Link className="link" to={this.state.url}>
               <Button variant="extendedFab" color="primary" >View Logs</Button>
             </Link>
           </div>

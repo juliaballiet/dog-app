@@ -4,6 +4,9 @@ import Axios from 'axios';
 import Header from '../Header/Header';
 import DogDropdown from '../Dropdowns/DogDropdown/DogDropdown';
 import SkillDropdown from '../Dropdowns/SkillDropdown/SkillDropdown';
+import { TextField } from '@material-ui/core';
+import SubmitAlert from '../SubmitAlert/SubmitAlert';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -36,7 +39,6 @@ class NewTrainingLogPage extends Component {
   }
 
   handleNewTrainingSubmit = (event) => {
-    event.preventDefault();
     console.log('in handleNewTrainingSubmit');
     Axios({
       method: 'POST',
@@ -44,8 +46,6 @@ class NewTrainingLogPage extends Component {
       data: this.props.newTraining
     }).then((response) => {
       console.log('back from /log/training with: ', response.data);
-      alert('new exercise logged!');
-      this.props.history.push()
     }).catch((error) => {
       console.log('/log/training error: ', error);
       alert('handleNewTrainingSubmit error');
@@ -59,10 +59,16 @@ class NewTrainingLogPage extends Component {
         <form onSubmit={this.handleNewTrainingSubmit}>
           <DogDropdown actionType="NEW_TRAINING_DOG" />
           <SkillDropdown />
-          <input onChange={this.handleDateChange} type="date" />
-          Duration: <input onChange={this.handleDurationChange} /> minutes
-          <br /> Notes: <input onChange={this.handleNotesChange} />
-          <input type="submit" />
+          <br /><TextField onChange={this.handleDateChange} type="date" />
+          <br />Duration: <TextField onChange={this.handleDurationChange} InputProps={{
+            endAdornment: (
+              <InputAdornment variant="filled" position="end">
+                minutes
+              </InputAdornment>
+            ),
+          }}  />
+          <br /> Notes: <TextField onChange={this.handleNotesChange} />
+          <br /><SubmitAlert word="training" newEntry={this.handleNewTrainingSubmit} />
         </form>
       </div>
     );

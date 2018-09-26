@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Datepicker from '../../Datepicker/Datepicker';
 import Button from '@material-ui/core/Button';
@@ -66,7 +63,7 @@ class AddDogForm extends Component {
                     <Input id="name-disabled" value={this.state.name} onChange={this.handleInputChange} />
                 </FormControl>
                 <Datepicker label="birthday" />
-                <Button onClick={this.handleAddDogSubmit} variant="contained" color="primary">Add Dog</Button>
+                <Button onClick={this.handleAddDogSubmit} variant="extendedFab" color="primary">Add Dog</Button>
             </form>
 
             // <form onSubmit={this.handleAddDogSubmit}>

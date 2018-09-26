@@ -13,6 +13,13 @@ const mapStateToProps = state => ({
 });
 
 class ActivityDropdown extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            selected: '',
+        }
+    }
+
     componentDidMount = () => {
         this.getActivities();
     }
@@ -36,6 +43,9 @@ class ActivityDropdown extends Component {
     }
 
     handleActivityChange = (event) => {
+        this.setState({
+            selected: event.target.value
+        })
         let action = {
             type: 'NEW_EXERCISE_ACTIVITY',
             payload: event.target.value
@@ -48,8 +58,9 @@ class ActivityDropdown extends Component {
             <FormControl>
                 <InputLabel htmlFor="select-activity">Select Activity</InputLabel>
                 <Select
-                    onChange={this.handleFoodChange}
+                    onChange={this.handleActivityChange}
                     className="input"
+                    value={this.state.selected}
                     inputProps={{
                         name: 'select-activity',
                         id: 'select-activity'
@@ -57,7 +68,7 @@ class ActivityDropdown extends Component {
                 >
                     {this.props.activities.map((activity) => {
                         return (
-                            <MenuItem key={activity.id} value={activity.id}>{activity.brand} {activity.variety}</MenuItem>
+                            <MenuItem key={activity.id} value={activity.id}>{activity.activity}</MenuItem>
                         )
                     })}
                 </Select>

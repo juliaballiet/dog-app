@@ -37,12 +37,12 @@ class FoodMenu extends React.Component {
                     style={{marginLeft: '7.5em'}}
                 >
                     <MenuItem>
-                        <Link to="/manage-food">
+                        <Link className="link" to="/manage-food">
                             Manage Food
                         </Link>
                     </MenuItem>
                     <MenuItem>
-                        <Link to="/new-feeding">
+                        <Link className="link" to="/new-feeding">
                             New Feeding
                         </Link>
                     </MenuItem>

@@ -9,10 +9,17 @@ import '../Dropdown.css';
 
 const mapStateToProps = state => ({
     user: state.user,
-    dogs: state.dogs
+    dogs: state.dogs,
 });
 
 class DogDropdown extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected: ''
+        }
+    }
+
     componentDidMount = () => {
         this.getDogs();
     }
@@ -36,6 +43,9 @@ class DogDropdown extends Component {
     }
 
     handleDogChange = (event) => {
+        this.setState({
+            selected: event.target.value
+        })
         let action = {
             type: this.props.actionType,
             payload: event.target.value
@@ -50,6 +60,7 @@ class DogDropdown extends Component {
                 <Select
                     onChange={this.handleDogChange}
                     className="input"
+                    value={this.state.selected}
                     inputProps={{
                         name: 'select-dog',
                         id: 'select-dog'

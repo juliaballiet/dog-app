@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import DogListItem from './DogListItem/DogListItem';
 import Axios from 'axios';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
@@ -9,15 +8,6 @@ import Card from '../Card/Card';
 const mapStateToProps = state => ({
     user: state.user,
     dogs: state.dogs
-});
-
-const styles = theme => ({
-    button: {
-        margin: theme.spacing.unit,
-    },
-    input: {
-        display: 'none',
-    },
 });
 
 class DogList extends Component {
@@ -66,7 +56,7 @@ class DogList extends Component {
                         )
                     })}
                 </ul>
-                <Button onClick={this.handleAddDog} variant="contained" color="primary">
+                <Button onClick={this.handleAddDog} variant="extendedFab" color="primary">
                     <AddIcon />
                     new dog
                 </Button>

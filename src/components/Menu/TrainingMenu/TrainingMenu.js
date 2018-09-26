@@ -27,7 +27,7 @@ class TrainingMenu extends React.Component {
                     aria-haspopup="true"
                     onClick={this.handleClick}
                 >
-                    Food
+                    Training
                 </Button>
                 <Menu
                     id="simple-menu"
@@ -37,12 +37,12 @@ class TrainingMenu extends React.Component {
                     style={{marginLeft: '7.5em'}}
                 >
                     <MenuItem>
-                        <Link to="/manage-skills">
+                        <Link className="link" to="/manage-skills">
                             Manage Skills
                         </Link>
                     </MenuItem>
                     <MenuItem>
-                        <Link to="/new-training">
+                        <Link className="link" to="/new-training">
                             New Training Session
                         </Link>
                     </MenuItem>

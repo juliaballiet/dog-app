@@ -9,7 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import FeedingLog from '../../FeedingLogPage/FeedingLogPage';
 import ExerciseLog from '../../ExerciseLogPage/ExerciseLogPage';
 import TrainingLog from '../../TrainingLogPage/TrainingLogPage';
-import Header from '../../Header/Header';
 import BackButton from '../../BackButton/BackButton';
 
 function TabContainer({ children, dir }) {

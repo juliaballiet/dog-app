@@ -37,12 +37,12 @@ class ExerciseMenu extends React.Component {
                     style={{marginLeft: '7.5em'}}
                 >
                     <MenuItem>
-                        <Link to="/manage-activities">
+                        <Link className="link" to="/manage-activities">
                             Manage Activities
                         </Link>
                     </MenuItem>
                     <MenuItem>
-                        <Link to="/new-exercise">
+                        <Link className="link" to="/new-exercise">
                             New Exercise
                         </Link>
                     </MenuItem>

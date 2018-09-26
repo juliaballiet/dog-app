@@ -4,6 +4,11 @@ import Header from '../Header/Header';
 import DogDropdown from '../Dropdowns/DogDropdown/DogDropdown';
 import ActivityDropdown from '../Dropdowns/ActivityDropdown/ActivityDropdown';
 import Axios from 'axios';
+import { TextField } from '@material-ui/core';
+import SubmitAlert from '../SubmitAlert/SubmitAlert';
+import InputAdornment from '@material-ui/core/InputAdornment';
+
+
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -37,7 +42,6 @@ class NewExerciseLogPage extends Component {
   }
 
   handleNewExerciseSubmit = (event) => {
-    event.preventDefault();
     console.log('in handleNewExerciseSubmit');
     Axios({
       method: 'POST',
@@ -45,8 +49,6 @@ class NewExerciseLogPage extends Component {
       data: this.props.newExercise
     }).then((response) => {
       console.log('back from /log/exercise with: ', response.data);
-      alert('new exercise logged!');
-      this.props.history.push()
     }).catch((error) => {
       console.log('/log/exercise error: ', error);
       alert('handleNewExerciseSubmit error');
@@ -59,11 +61,17 @@ class NewExerciseLogPage extends Component {
         <Header />
         <form onSubmit={this.handleNewExerciseSubmit}>
           <DogDropdown actionType="NEW_EXERCISE_DOG" />
-          <ActivityDropdown />
-          <input onChange={this.handleDateChange} type="date" />
-          Duration: <input onChange={this.handleDurationChange} /> minutes
-          <br /> Notes: <input onChange={this.handleNotesChange} />
-          <input type="submit" />
+          <br /><ActivityDropdown />
+          <br /><TextField onChange={this.handleDateChange} type="date" />
+          <br />Duration: <TextField onChange={this.handleDurationChange} InputProps={{
+            endAdornment: (
+              <InputAdornment variant="filled" position="end">
+                minutes
+              </InputAdornment>
+            ),
+          }}  />
+          <br /> Notes: <TextField onChange={this.handleNotesChange} />
+          <br /><SubmitAlert word="exercise" newEntry={this.handleNewExerciseSubmit} />
         </form>
       </div>
     );

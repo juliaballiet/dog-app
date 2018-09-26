@@ -63,7 +63,8 @@ router.get('/exercise/:id', (req, res) => {
         ON "activities_exercise"."exercise_id" = "exercise"."id"
         JOIN "activities"
         ON "activities"."id" = "activities_exercise"."activity_id"
-        WHERE "dog_id" = $1`;
+        WHERE "dog_id" = $1
+        ORDER BY "date";`;
         pool.query(queryText, [req.params.id]).then((results) => {
             res.send(results.rows);
         }).catch((error) => {
@@ -83,7 +84,8 @@ router.get('/training/:id', (req, res) => {
         ON "skills_training"."training_id" = "training"."id"
         JOIN "skills"
         ON "skills"."id" = "skills_training"."skill_id"
-        WHERE "dog_id" = $1;`;
+        WHERE "dog_id" = $1
+        ORDER BY "date";`;
         pool.query(queryText, [req.params.id]).then((results) => {
             res.send(results.rows);
         }).catch((error) => {
@@ -120,6 +122,7 @@ router.post('/exercise', (req, res) => {
             const client = await pool.connect();
 
             try {
+                console.log(req.body);
                 await client.query('BEGIN');
                 let queryText = `INSERT INTO "exercise" ("dog_id", "date", "duration", "notes")
                 VALUES ($1, $2, $3, $4) RETURNING "id";`;
@@ -129,9 +132,9 @@ router.post('/exercise', (req, res) => {
 
                 queryText = `INSERT INTO "activities_exercise" ("activity_id", "exercise_id")
                 VALUES ($1, $2);`;
-                for (let activity of req.body.activity_id) {
-                    const result = await client.query(queryText, [activity, exerciseId]);
-                }
+                // for (let activity of req.body.activity_id) {
+                    await client.query(queryText, [req.body.activity_id, exerciseId]);
+                // }
                 await client.query('COMMIT');
                 res.sendStatus(201);
             } catch (e) {
@@ -160,14 +163,14 @@ router.post('/training', (req, res) => {
                 let queryText = `INSERT INTO "training" ("dog_id", "date", "duration", "notes")
                 VALUES ($1, $2, $3, $4) RETURNING "id";`;
                 const values = [req.body.dog_id, req.body.date, req.body.duration, req.body.notes];
-                const exerciseResult = await client.query(queryText, values);
-                const exerciseId = exerciseResult.rows[0].id;
+                const trainingResult = await client.query(queryText, values);
+                const trainingId = trainingResult.rows[0].id;
 
                 queryText = `INSERT INTO "skills_training" ("skill_id", "training_id")
                 VALUES ($1, $2);`;
-                for (let skill of req.body.skill_id) {
-                    const result = await client.query(queryText, [skill, exerciseId]);
-                }
+                // for (let skill of req.body.skill_id) {
+                    await client.query(queryText, [req.body.skill_id, trainingId]);
+                // }
                 await client.query('COMMIT');
                 res.sendStatus(201);
             } catch (e) {

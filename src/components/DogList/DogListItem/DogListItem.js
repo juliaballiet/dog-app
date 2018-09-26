@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -39,22 +38,13 @@ class DogListItem extends Component {
                             image="/images/shoko.jpg"
                         />
                         <CardContent>
-                            <Typography gutterBottom variant="headline" component="h2">
+                            <Typography className="link" gutterBottom variant="headline" component="h2">
                                 {this.props.dog.name}
                             </Typography>
                         </CardContent>
                     </CardActionArea>
                 </Card>
             </Link>
-            // <div>
-            //     <li>
-            //         <div>
-            //             <h2><Link to={this.state.url}>
-            //             {this.props.dog.name}
-            //             </Link></h2>
-            //         </div>
-            //     </li>
-            // </div>
         );
     }
 }

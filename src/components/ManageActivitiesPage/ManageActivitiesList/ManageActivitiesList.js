@@ -36,13 +36,13 @@ class ManageActivitiesList extends Component {
     return (
       <div>
         <h1>List of Activities</h1>
-        <ul>
+        <div>
             {this.props.activitiesList.map((activity) => {
                 return(
                     <ManageActivitiesListItem key={activity.id} activity={activity} getActivitiesList={this.getActivitiesList} />
                 )
             })}
-        </ul>
+        </div>
       </div>
     );
   }

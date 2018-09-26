@@ -13,6 +13,13 @@ const mapStateToProps = state => ({
 });
 
 class FoodDropdown extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected: '',
+        }
+    }
+
     componentDidMount = () => {
         this.getFood();
     }
@@ -36,6 +43,9 @@ class FoodDropdown extends Component {
     }
 
     handleFoodChange = (event) => {
+        this.setState({
+            selected: event.target.value,
+        })
         let action = {
             type: 'NEW_FEEDING_FOOD',
             payload: event.target.value
@@ -49,6 +59,7 @@ class FoodDropdown extends Component {
                 <InputLabel htmlFor="select-food">Select Food</InputLabel>
                 <Select
                     onChange={this.handleFoodChange}
+                    value={this.state.selected}
                     className="input"
                     inputProps={{
                         name: 'select-food',

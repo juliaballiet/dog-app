@@ -5,7 +5,7 @@ import DogDropdown from '../Dropdowns/DogDropdown/DogDropdown';
 import FoodDropdown from '../Dropdowns/FoodDropdown/FoodDropdown';
 import Axios from 'axios';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import SubmitAlert from '../SubmitAlert/SubmitAlert';
 import '../Dropdowns/Dropdown.css';
 
 
@@ -33,7 +33,6 @@ class NewFeedingLogPage extends Component {
   }
 
   handleNewFeedingSubmit = (event) => {
-    event.preventDefault();
     console.log('in handleNewFeedingSubmit');
     Axios({
       method: 'POST',
@@ -41,8 +40,6 @@ class NewFeedingLogPage extends Component {
       data: this.props.newFeeding
     }).then((response) => {
       console.log('back from /log/feeding with: ', response.data);
-      alert('new feeding logged!');
-      this.props.history.push()
     }).catch((error) => {
       console.log('/log/feeding error: ', error);
       alert('handleNewFeedingSubmit error');
@@ -53,12 +50,12 @@ class NewFeedingLogPage extends Component {
     return (
       <div>
         <Header />
-        <form onSubmit={this.handleNewFeedingSubmit}>
+        <form>
           <DogDropdown actionType="NEW_FEEDING_DOG" />
           <br /><FoodDropdown />
           <br /><TextField className="input" onChange={this.handleDateChange} type="date" />
           <br /><TextField className="input" onChange={this.handleTimeChange} type="time" />
-          <br /><Button variant="contained" color="primary" type="submit">Submit</Button>
+          <br /><SubmitAlert word="feeding" newEntry={this.handleNewFeedingSubmit} />
         </form>
       </div>
     );

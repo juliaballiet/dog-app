@@ -13,6 +13,13 @@ const mapStateToProps = state => ({
 });
 
 class SkillDropdown extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            selected: '',
+        }
+    }
+
     componentDidMount = () => {
         this.getSkills();
     }
@@ -36,6 +43,9 @@ class SkillDropdown extends Component {
     }
 
     handleSkillChange = (event) => {
+        this.setState({
+            selected: event.target.value,
+        })
         let action = {
             type: 'NEW_TRAINING_SKILL',
             payload: event.target.value
@@ -48,7 +58,8 @@ class SkillDropdown extends Component {
             <FormControl>
                 <InputLabel htmlFor="select-skill">Select Skill</InputLabel>
                 <Select
-                    onChange={this.handleFoodChange}
+                    onChange={this.handleSkillChange}
+                    value={this.state.selected}
                     className="input"
                     inputProps={{
                         name: 'select-skill',

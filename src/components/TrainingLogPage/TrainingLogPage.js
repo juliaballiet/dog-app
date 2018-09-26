@@ -56,6 +56,9 @@ class TrainingLogPage extends Component {
       data: {
         labels: dataLabels,
         datasets: [{
+          pointRadius: 5,
+          pointHoverRadius: 5,
+          pointHitRadius: 10,
           label: "duration",
           backgroundColor: 'rgb(158, 204, 255)',
           borderColor: 'rgb(84, 166, 255)',
