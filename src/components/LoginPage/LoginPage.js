@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import { TextField, Button } from '@material-ui/core';
 
 
 const mapStateToProps = state => ({
@@ -69,8 +70,8 @@ class LoginPage extends Component {
           <h1>Login</h1>
           <div>
             <label htmlFor="username">
-              Username:
-              <input
+              <TextField
+                label="username"
                 type="text"
                 name="username"
                 value={this.state.username}
@@ -80,8 +81,8 @@ class LoginPage extends Component {
           </div>
           <div>
             <label htmlFor="password">
-              Password:
-              <input
+              <TextField
+                label="password"
                 type="password"
                 name="password"
                 value={this.state.password}
@@ -90,12 +91,14 @@ class LoginPage extends Component {
             </label>
           </div>
           <div>
-            <input
+            <Button
+              variant="extendedFab"
+              color="primary"
               type="submit"
               name="submit"
               value="Log In"
-            />
-            <Link to="/register">Register</Link>
+            >Log In</Button>
+            <br /><Link className="link" to="/register">Register</Link>
           </div>
         </form>
       </div>

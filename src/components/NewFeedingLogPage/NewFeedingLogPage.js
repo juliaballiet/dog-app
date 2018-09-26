@@ -55,7 +55,7 @@ class NewFeedingLogPage extends Component {
           <br /><FoodDropdown />
           <br /><TextField className="input" onChange={this.handleDateChange} type="date" />
           <br /><TextField className="input" onChange={this.handleTimeChange} type="time" />
-          <br /><SubmitAlert word="feeding" newEntry={this.handleNewFeedingSubmit} />
+          <br /><SubmitAlert words="new feeding log added!" newEntry={this.handleNewFeedingSubmit} />
         </form>
       </div>
     );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 import Header from '../Header/Header';
 import ManageSkillsList from './ManageSkillsList/ManageSkillsList';
@@ -21,7 +22,7 @@ class ManageSkillsPage extends Component {
       <div>
         <Header />
         <ManageSkillsList />
-        <Link to='/add-skill'><button>Add Skill</button></Link>
+        <Link to='/add-skill'><Button variant="extendedFab" color="primary">Add Skill</Button></Link>
       </div>
     );
   }

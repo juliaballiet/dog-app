@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import { TextField, Button } from '@material-ui/core';
+import Header from '../Header/Header';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -47,10 +49,11 @@ class AddActivityPage extends Component {
   render() {
     return (
       <div>
+        <Header />
         <form onSubmit={this.handleSubmitNewActivity}>
-          <p>Activity: <input name="activity" onChange={this.handleInputChange} /></p>
-          <p>Description: <input name="description" onChange={this.handleInputChange} /></p>
-          <input type="submit" />
+          <p><TextField label="activity" name="activity" onChange={this.handleInputChange} /></p>
+          <p><TextField label="description" name="description" onChange={this.handleInputChange} /></p>
+          <Button type="submit" variant="contained" color="primary">Add Food</Button>
         </form>
       </div>
     );

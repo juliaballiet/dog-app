@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { TextField, Button } from '@material-ui/core';
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -73,8 +74,8 @@ class RegisterPage extends Component {
           <h1>Register User</h1>
           <div>
             <label htmlFor="username">
-              Username:
-              <input
+              <TextField
+                label="username"
                 type="text"
                 name="username"
                 value={this.state.username}
@@ -84,8 +85,8 @@ class RegisterPage extends Component {
           </div>
           <div>
             <label htmlFor="password">
-              Password:
-              <input
+              <TextField
+                label="password"
                 type="password"
                 name="password"
                 value={this.state.password}
@@ -94,12 +95,14 @@ class RegisterPage extends Component {
             </label>
           </div>
           <div>
-            <input
+            <Button
+              variant="extendedFab"
+              color="primary"
               type="submit"
               name="submit"
               value="Register"
-            />
-            <Link to="/home">Cancel</Link>
+              >Register</Button>
+            <br /><Link className="link" to="/home">Cancel</Link>
           </div>
         </form>
       </div>

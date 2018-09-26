@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const mapStateToProps = state => ({
     user: state.user,
@@ -54,32 +61,46 @@ class ManageActivitiesListItem extends Component {
 
     render() {
         let content = null;
-        let buttonText = '';
+        // let buttonText = '';
 
         if (this.state.edit) {
             content = (
                 <div>
-                    <h4><input name="activity" onChange={this.handleInputChange} value={this.state.edittedActivity.activity} /></h4>
-                    <p><input name="description" onChange={this.handleInputChange} value={this.state.edittedActivity.description} /></p>
-                    <button onClick={this.handleActivityEdit}>confirm edit</button>
+                    <h4><TextField name="activity" label="activity" onChange={this.handleInputChange} value={this.state.edittedActivity.activity} />
+                    <TextField name="description" label="description" onChange={this.handleInputChange} value={this.state.edittedActivity.description} /></h4>
+                    <Button onClick={this.handleActivityEdit} variant="contained" color="primary">confirm edit</Button>
+                    <br /><Button
+                    value={this.props.activity.id}
+                    onClick={this.handleToggleEdit}
+                    variant="contained"
+                    color="primary">cancel</Button>
                 </div>
             );
-            buttonText = 'cancel'
         } else {
             content = (
-                <div>
-                    <h4>{this.props.activity.activity}</h4>
-                    <p>{this.props.activity.description}</p>
-                </div>
+                <ExpansionPanel>
+                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                        <Typography>{this.props.activity.activity}</Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                        <Typography>
+                            {this.props.activity.description}
+                            <br /><Button
+                    value={this.props.activity.id}
+                    onClick={this.handleToggleEdit}
+                    variant="contained"
+                    color="primary">edit</Button>
+          </Typography>
+                    </ExpansionPanelDetails>
+                </ExpansionPanel>
+
             );
-            buttonText = 'edit'
         }
 
         return (
-            <li>
+            <div>
                 {content}
-                <br /> <button value={this.props.activity.id} onClick={this.handleToggleEdit}>{buttonText}</button>
-            </li>
+            </div>
         );
     }
 }

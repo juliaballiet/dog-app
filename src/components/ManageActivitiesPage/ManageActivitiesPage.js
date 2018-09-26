@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+
 
 import Header from '../Header/Header';
 import ManageActivitiesList from './ManageActivitiesList/ManageActivitiesList';
@@ -21,7 +23,7 @@ class ManageActivitiesPage extends Component {
       <div>
         <Header />
         <ManageActivitiesList />
-        <Link to='/add-activity'><button>Add Activity</button></Link>
+        <Link to='/add-activity'><Button variant="extendedFab" color="primary">Add Activity</Button></Link>
       </div>
     );
   }

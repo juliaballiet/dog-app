@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import Header from '../Header/Header';
+import { TextField, Button } from '@material-ui/core';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -47,10 +49,11 @@ class AddSkillPage extends Component {
   render() {
     return (
       <div>
+        <Header />
         <form onSubmit={this.handleSubmitNewSkill}>
-          <p>Skill name: <input name="name" onChange={this.handleInputChange} /></p>
-          <p>Description: <input name="description" onChange={this.handleInputChange} /></p>
-          <input type="submit" />
+          <p><TextField label="skill" name="name" onChange={this.handleInputChange} /></p>
+          <p><TextField label="description" name="description" onChange={this.handleInputChange} /></p>
+          <Button type="submit" variant="contained" color="primary">Add Skill</Button>
         </form>
       </div>
     );
