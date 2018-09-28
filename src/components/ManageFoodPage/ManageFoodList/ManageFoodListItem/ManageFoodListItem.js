@@ -73,8 +73,7 @@ class ManageFoodListItem extends Component {
                 <div>
                     <h4><TextField name="brand" label="brand" onChange={this.handleInputChange} value={this.state.edittedFood.brand} />
                         <TextField name="variety" label="variety" onChange={this.handleInputChange} value={this.state.edittedFood.variety} /></h4>
-                    <p><TextField name="type" label="type" onChange={this.handleInputChange} value={this.state.edittedFood.type} />
-                        <Input name="amount" onChange={this.handleInputChange} value={this.state.edittedFood.amount} endAdornment={<InputAdornment position="end">cups</InputAdornment>} /></p>
+                    <p><TextField name="type" label="type" onChange={this.handleInputChange} value={this.state.edittedFood.type} /></p>
                     <Button onClick={this.handleFoodEdit} variant="contained" color="primary">confirm edit</Button>
                     <br /><Button
                     value={this.props.food.id}
@@ -91,8 +90,8 @@ class ManageFoodListItem extends Component {
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
                         <Typography>
-                            {this.props.food.type} -- {this.props.food.amount} cups
-                            <br /><Button
+                            {this.props.food.type}
+                            <Button
                     value={this.props.food.id}
                     onClick={this.handleToggleEdit}
                     variant="contained"

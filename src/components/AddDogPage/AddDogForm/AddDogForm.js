@@ -4,7 +4,7 @@ import Axios from 'axios';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
-import Datepicker from '../../Datepicker/Datepicker';
+import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 const mapStateToProps = state => ({
@@ -23,7 +23,7 @@ class AddDogForm extends Component {
     }
 
     handleInputChange = (event) => {
-        console.log('handleInputChange');
+        console.log('handleInputChange', event.target.value);
         this.setState({
             ...this.state,
             [event.target.name]: event.target.value
@@ -52,17 +52,17 @@ class AddDogForm extends Component {
             <form>
                 <FormControl>
                     <InputLabel htmlFor="name-simple">Name</InputLabel>
-                    <Input id="name-simple" value={this.state.name} onChange={this.handleInputChange} />
+                    <Input name="name" value={this.state.name} onChange={this.handleInputChange} />
                 </FormControl>
                 <FormControl>
                     <InputLabel htmlFor="name-helper">Breed</InputLabel>
-                    <Input id="name-helper" value={this.state.name} onChange={this.handleInputChange} />
+                    <Input name="breed" value={this.state.breed} onChange={this.handleInputChange} />
                 </FormControl>
                 <FormControl>
                     <InputLabel htmlFor="name-disabled">Weight</InputLabel>
-                    <Input id="name-disabled" value={this.state.name} onChange={this.handleInputChange} />
+                    <Input name="weight" value={this.state.weight} onChange={this.handleInputChange} />
                 </FormControl>
-                <Datepicker label="birthday" />
+                <br /><TextField type="date" label="birthday" name="birthday" value={this.state.birthday} onChange={this.handleInputChange} />
                 <Button onClick={this.handleAddDogSubmit} variant="extendedFab" color="primary">Add Dog</Button>
             </form>
 

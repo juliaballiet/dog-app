@@ -73,7 +73,7 @@ class TrainingLogPage extends Component {
     return (
       <div>
         <h1>Training Log</h1>
-        <Chart data={this.state.data} />
+        <Chart info={this.props.trainingLog} word="skills" id={this.props.id} data={this.state.data} />
       </div>
     );
   }

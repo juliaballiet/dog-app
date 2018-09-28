@@ -39,7 +39,7 @@ class FeedingLogEntry extends Component {
       <ul>
         {this.state.entries.map((entry, i) => {
             return(
-                <li key={i}>{entry.brand} {entry.variety} at {moment(entry.time, 'h:mm:ss').format('h:mm a')}</li>
+                <li key={i}>{entry.amount} cups of {entry.brand} {entry.variety} at {moment(entry.time, 'h:mm:ss').format('h:mm a')}</li>
             )
         })}
       </ul>

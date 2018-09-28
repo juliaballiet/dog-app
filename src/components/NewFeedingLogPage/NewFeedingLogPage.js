@@ -6,6 +6,8 @@ import FoodDropdown from '../Dropdowns/FoodDropdown/FoodDropdown';
 import Axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import SubmitAlert from '../SubmitAlert/SubmitAlert';
+import Input from '@material-ui/core/Input';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import '../Dropdowns/Dropdown.css';
 
 
@@ -27,6 +29,14 @@ class NewFeedingLogPage extends Component {
   handleTimeChange = (event) => {
     let action = {
       type: 'NEW_FEEDING_TIME',
+      payload: event.target.value
+    }
+    this.props.dispatch(action);
+  }
+
+  handleAmountChange = (event) => {
+    let action = {
+      type: 'NEW_FEEDING_AMOUNT',
       payload: event.target.value
     }
     this.props.dispatch(action);
@@ -55,7 +65,16 @@ class NewFeedingLogPage extends Component {
           <br /><FoodDropdown />
           <br /><TextField className="input" onChange={this.handleDateChange} type="date" />
           <br /><TextField className="input" onChange={this.handleTimeChange} type="time" />
-          <br /><SubmitAlert words="new feeding log added!" newEntry={this.handleNewFeedingSubmit} />
+          <br /><Input
+            onChange={this.handleAmountChange}
+            endAdornment={
+              <InputAdornment position="end">cups</InputAdornment>
+            }
+          />
+          <br /><SubmitAlert words="new feeding log added!"
+          newEntry={this.handleNewFeedingSubmit}
+          buttonText="submit"
+          reload="true" />
         </form>
       </div>
     );

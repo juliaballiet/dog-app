@@ -19,7 +19,7 @@ class ManageActivitiesListItem extends Component {
         this.state = {
             edit: false,
             edittedActivity: {
-                activity: this.props.activity.activity,
+                name: this.props.activity.name,
                 description: this.props.activity.description,
                 id: this.props.activity.id
             }
@@ -66,7 +66,7 @@ class ManageActivitiesListItem extends Component {
         if (this.state.edit) {
             content = (
                 <div>
-                    <h4><TextField name="activity" label="activity" onChange={this.handleInputChange} value={this.state.edittedActivity.activity} />
+                    <h4><TextField name="name" label="name" onChange={this.handleInputChange} value={this.state.edittedActivity.name} />
                     <TextField name="description" label="description" onChange={this.handleInputChange} value={this.state.edittedActivity.description} /></h4>
                     <Button onClick={this.handleActivityEdit} variant="contained" color="primary">confirm edit</Button>
                     <br /><Button
@@ -80,12 +80,12 @@ class ManageActivitiesListItem extends Component {
             content = (
                 <ExpansionPanel>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                        <Typography>{this.props.activity.activity}</Typography>
+                        <Typography>{this.props.activity.name}</Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
                         <Typography>
                             {this.props.activity.description}
-                            <br /><Button
+                            <br /><br /><Button
                     value={this.props.activity.id}
                     onClick={this.handleToggleEdit}
                     variant="contained"

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Axios from 'axios';
-import { TextField, Button } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import Header from '../Header/Header';
+import SubmitAlert from '../SubmitAlert/SubmitAlert';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -13,7 +14,7 @@ class AddActivityPage extends Component {
     super(props);
     this.state = {
       newActivity: {
-        activity: '',
+        name: '',
         description: '',
       }
     }
@@ -30,7 +31,6 @@ class AddActivityPage extends Component {
   }
 
   handleSubmitNewActivity = (event) => {
-    event.preventDefault();
     console.log('in handleSubmitNewActivity with: ', this.state.newActivity);
     Axios({
       method: 'POST',
@@ -38,8 +38,6 @@ class AddActivityPage extends Component {
       data: this.state.newActivity
     }).then((response) => {
       console.log('back from /list/activities POST with: ', response.data);
-      alert('New Activity added!');
-      this.props.history.push('/manage-activities');
     }).catch((error) => {
       console.log('handleSubmitNewActivity error: ', error);
       alert('handleSubmitNewActivity error');
@@ -51,9 +49,13 @@ class AddActivityPage extends Component {
       <div>
         <Header />
         <form onSubmit={this.handleSubmitNewActivity}>
-          <p><TextField label="activity" name="activity" onChange={this.handleInputChange} /></p>
+          <p><TextField label="name" name="name" onChange={this.handleInputChange} /></p>
           <p><TextField label="description" name="description" onChange={this.handleInputChange} /></p>
-          <Button type="submit" variant="contained" color="primary">Add Food</Button>
+          <SubmitAlert words="activity added!"
+           newEntry={this.handleSubmitNewActivity}
+           buttonText="Add Activity"
+           address="/manage-activities"
+           history={this.props.history} />
         </form>
       </div>
     );

@@ -11,6 +11,8 @@ const newFeeding = (state = {}, action) => {
       return { ...state, date: action.payload };
     case 'NEW_FEEDING_TIME':
       return { ...state, time: action.payload };
+    case 'NEW_FEEDING_AMOUNT':
+      return {...state, amount: action.payload};
     default:
       return state;
   }

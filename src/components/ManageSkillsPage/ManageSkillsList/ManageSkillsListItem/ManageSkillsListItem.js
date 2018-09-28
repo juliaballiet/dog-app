@@ -84,7 +84,7 @@ class ManageSkillsListItem extends Component {
                     <ExpansionPanelDetails>
                         <Typography>
                             {this.props.skill.description}
-                            <br /><Button
+                            <br /><br /><Button
                     value={this.props.skill.id}
                     onClick={this.handleToggleEdit}
                     variant="contained"

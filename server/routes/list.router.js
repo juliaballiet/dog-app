@@ -56,10 +56,10 @@ router.get('/skills', (req, res) => {
 router.post('/food', (req, res) => {
     if (req.isAuthenticated()) {
         console.log('/list/food POST route: ', req.body);
-        const queryText = `INSERT INTO "foods" ("brand", "variety", "type", "amount", "user_id")
-        VALUES ($1, $2, $3, $4, $5);`;
+        const queryText = `INSERT INTO "foods" ("brand", "variety", "type", "user_id")
+        VALUES ($1, $2, $3, $4);`;
         pool.query(queryText, [req.body.brand, req.body.variety, req.body.type,
-        req.body.amount, req.user.id]).then((results) => {
+        req.user.id]).then((results) => {
             res.sendStatus(200);
         }).catch((error) => {
             console.log('/food POST route error: ', error);
@@ -73,9 +73,9 @@ router.post('/food', (req, res) => {
 router.post('/activities', (req, res) => {
     if (req.isAuthenticated()) {
         console.log('/list/activities POST route: ', req.body);
-        const queryText = `INSERT INTO "activities" ("activity", "description", "user_id")
+        const queryText = `INSERT INTO "activities" ("name", "description", "user_id")
         VALUES ($1, $2, $3);`;
-        pool.query(queryText, [req.body.activity, req.body.description, req.user.id]).then((results) => {
+        pool.query(queryText, [req.body.name, req.body.description, req.user.id]).then((results) => {
             res.sendStatus(200);
         }).catch((error) => {
             console.log('/activities POST route error: ', error);
@@ -109,9 +109,9 @@ router.put('/food', (req, res) => {
     if (req.isAuthenticated()) {
         console.log('/list/food PUT route with: ', req.body);
         const queryText = `UPDATE "foods" SET "brand" = $1, "variety" = $2, 
-        "type" = $3, "amount" = $4 WHERE "id" = $5;`;
+        "type" = $3 WHERE "id" = $4;`;
         pool.query(queryText, [req.body.brand, req.body.variety, req.body.type,
-        req.body.amount, req.body.id]).then((results) => {
+        req.body.id]).then((results) => {
             res.sendStatus(200);
         }).catch((error) => {
             console.log('/food PUT route error: ', error);
@@ -125,9 +125,9 @@ router.put('/food', (req, res) => {
 router.put('/activities', (req, res) => {
     if (req.isAuthenticated()) {
         console.log('/list/activities PUT route with: ', req.body);
-        const queryText = `UPDATE "activities" SET "activity" = $1, "description" = $2 
+        const queryText = `UPDATE "activities" SET "name" = $1, "description" = $2 
         WHERE "id" = $3;`;
-        pool.query(queryText, [req.body.activity, req.body.description, req.body.id]).then((results) => {
+        pool.query(queryText, [req.body.name, req.body.description, req.body.id]).then((results) => {
             res.sendStatus(200);
         }).catch((error) => {
             console.log('/activities PUT route error: ', error);

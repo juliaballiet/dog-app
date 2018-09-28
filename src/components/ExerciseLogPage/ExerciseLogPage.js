@@ -74,7 +74,7 @@ class ExerciseLogPage extends Component {
       <div>
         <h1>Exercise Log</h1>
         {/* <ExerciseLog id={this.props.id} /> */}
-        <Chart data={this.state.data} id={this.props.id} />
+        <Chart info={this.props.exerciseLog} word="activities" id={this.props.id} data={this.state.data} />
       </div>
     );
   }

@@ -22,13 +22,17 @@ class SimpleSnackbar extends React.Component {
 
   handleClose = (event, reason) => {
     this.setState({ open: false });
-    window.location.reload();
+    if (this.props.reload === 'true') {
+      window.location.reload();
+    } else {
+      this.props.history.push(this.props.address);
+    } 
   };
 
   render() {
     return (
       <div>
-        <Button variant="extendedFab" color="primary" onClick={this.handleClick}>Submit</Button>
+        <Button variant="extendedFab" color="primary" onClick={this.handleClick}>{this.props.buttonText}</Button>
         <Snackbar
           anchorOrigin={{
             vertical: 'top',

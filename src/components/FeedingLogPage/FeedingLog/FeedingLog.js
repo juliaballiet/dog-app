@@ -49,7 +49,7 @@ class FeedingLog extends Component {
             method: 'GET',
             url: '/log/feeding-dates/' + this.props.id
         }).then((response) => {
-            console.log('back from getFeedingDates with: ', response.data);
+            console.log('back from getFeedingDates with: ', response);
             this.setState({
                 dates: response.data
             })

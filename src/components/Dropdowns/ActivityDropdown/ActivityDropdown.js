@@ -68,7 +68,7 @@ class ActivityDropdown extends Component {
                 >
                     {this.props.activities.map((activity) => {
                         return (
-                            <MenuItem key={activity.id} value={activity.id}>{activity.activity}</MenuItem>
+                            <MenuItem key={activity.id} value={activity.id}>{activity.name}</MenuItem>
                         )
                     })}
                 </Select>

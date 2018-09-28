@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Header from '../Header/Header';
-import Button from '@material-ui/core/Button';
+import SubmitAlert from '../SubmitAlert/SubmitAlert';
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -33,7 +33,6 @@ class AddFoodPage extends Component {
   }
 
   handleSubmitNewFood = (event) => {
-    event.preventDefault();
     console.log('in handleSubmitNewFood with: ', this.state.newFood);
     Axios({
       method: 'POST',
@@ -41,7 +40,6 @@ class AddFoodPage extends Component {
       data: this.state.newFood
     }).then((response) => {
       console.log('back from /list/food POST with: ', response.data);
-      alert('New food added!');
       this.props.history.push('/manage-food');
     }).catch((error) => {
       console.log('handleFoodEdit error: ', error);
@@ -58,7 +56,11 @@ class AddFoodPage extends Component {
           <p><TextField label="brand" placeholder="Orijen" name="brand" onChange={this.handleInputChange} /></p>
           <p><TextField label="variety" placeholder="Six Fish" name="variety" onChange={this.handleInputChange} /></p>
           <p><TextField label="type of food" name="type" placeholder="kibble" onChange={this.handleInputChange} /></p>
-          <Button type="submit" variant="contained" color="primary">Add Food</Button>
+          <SubmitAlert words="food added!"
+           newEntry={this.handleSubmitNewFood}
+           buttonText="Add Food"
+           address="/manage-food"
+           history={this.props.history} />
         </form>
       </div>
     );
