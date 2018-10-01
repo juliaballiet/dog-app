@@ -68,7 +68,7 @@ class NewTrainingLogPage extends Component {
             ),
           }}  />
           <br /> Notes: <TextField onChange={this.handleNotesChange} />
-          <br /><SubmitAlert 
+          <br /><br /><SubmitAlert 
             words="new training log added!" 
             newEntry={this.handleNewTrainingSubmit}
             buttonText="submit"

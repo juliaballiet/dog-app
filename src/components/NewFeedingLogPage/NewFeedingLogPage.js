@@ -71,7 +71,7 @@ class NewFeedingLogPage extends Component {
               <InputAdornment position="end">cups</InputAdornment>
             }
           />
-          <br /><SubmitAlert words="new feeding log added!"
+          <br /><br /><SubmitAlert words="new feeding log added!"
           newEntry={this.handleNewFeedingSubmit}
           buttonText="submit"
           reload="true" />

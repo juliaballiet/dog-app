@@ -69,7 +69,7 @@ class ManageActivitiesListItem extends Component {
                     <h4><TextField name="name" label="name" onChange={this.handleInputChange} value={this.state.edittedActivity.name} />
                     <TextField name="description" label="description" onChange={this.handleInputChange} value={this.state.edittedActivity.description} /></h4>
                     <Button onClick={this.handleActivityEdit} variant="contained" color="primary">confirm edit</Button>
-                    <br /><Button
+                    <br /><br /><Button
                     value={this.props.activity.id}
                     onClick={this.handleToggleEdit}
                     variant="contained"

@@ -51,6 +51,7 @@ class DogList extends Component {
                     {this.props.dogs.map((dog) => {
                         return (
                             <div>
+                                <br />
                                 <Card key={dog.id} dog={dog} />
                             </div>
                         )

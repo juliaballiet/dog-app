@@ -11,7 +11,7 @@ class Chart extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            array: []
+            array: [],
         }
     }
 
@@ -20,10 +20,10 @@ class Chart extends Component {
             method: 'GET',
             url: `/log/${this.props.word}/${this.props.id}/${this.props.info[tooltipItem.index].date}`
         }).then((response) => {
-            console.log(response.data)
+            console.log(`/log/${this.props.word}/${this.props.id}/${this.props.info[tooltipItem.index].date} :`, response.data)
             this.setState({
-                array: response.data
-            })
+                array: response.data,
+            });
         }).catch((error) => {
             console.log('error:', error);
         })
@@ -31,6 +31,7 @@ class Chart extends Component {
         for (let item of this.state.array) {
             list = list.concat(item.name + ', ');
         }
+        console.log(list);
         return list;
     }
 

@@ -23,7 +23,8 @@ class ManageFoodPage extends Component {
       <div>
         <Header />
         <ManageFoodList />
-        <Link to='/add-food'>
+        <br />
+        <Link className="link" to='/add-food'>
           <Button variant="extendedFab" color="primary">Add Food</Button>
         </Link>
       </div>

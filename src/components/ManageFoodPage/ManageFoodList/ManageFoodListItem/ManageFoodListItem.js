@@ -75,7 +75,7 @@ class ManageFoodListItem extends Component {
                         <TextField name="variety" label="variety" onChange={this.handleInputChange} value={this.state.edittedFood.variety} /></h4>
                     <p><TextField name="type" label="type" onChange={this.handleInputChange} value={this.state.edittedFood.type} /></p>
                     <Button onClick={this.handleFoodEdit} variant="contained" color="primary">confirm edit</Button>
-                    <br /><Button
+                    <br /><br /> <Button
                     value={this.props.food.id}
                     onClick={this.handleToggleEdit}
                     variant="contained"
@@ -91,7 +91,7 @@ class ManageFoodListItem extends Component {
                     <ExpansionPanelDetails>
                         <Typography>
                             {this.props.food.type}
-                            <Button
+                            <br /><Button
                     value={this.props.food.id}
                     onClick={this.handleToggleEdit}
                     variant="contained"

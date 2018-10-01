@@ -66,6 +66,9 @@ class LoginPage extends Component {
     return (
       <div>
         { this.renderAlert() }
+        <div className="logo">
+          <h2>Paw Prints</h2>
+        </div>
         <form onSubmit={this.login}>
           <h1>Login</h1>
           <div>
@@ -91,14 +94,14 @@ class LoginPage extends Component {
             </label>
           </div>
           <div>
-            <Button
+          <br /><Button
               variant="extendedFab"
               color="primary"
               type="submit"
               name="submit"
               value="Log In"
             >Log In</Button>
-            <br /><Link className="link" to="/register">Register</Link>
+            <br /><br /><Link className="link" to="/register">Register</Link>
           </div>
         </form>
       </div>

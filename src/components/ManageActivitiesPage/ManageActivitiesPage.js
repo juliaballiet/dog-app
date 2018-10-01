@@ -23,7 +23,8 @@ class ManageActivitiesPage extends Component {
       <div>
         <Header />
         <ManageActivitiesList />
-        <Link to='/add-activity'><Button variant="extendedFab" color="primary">Add Activity</Button></Link>
+        <br />
+        <Link className="link" to='/add-activity'><Button variant="extendedFab" color="primary">Add Activity</Button></Link>
       </div>
     );
   }

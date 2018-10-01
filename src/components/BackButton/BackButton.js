@@ -4,7 +4,7 @@ import Icon from '@material-ui/core/Icon';
 
 function BackButton(props) {
     return (
-        <Link to={props.url}>
+        <Link className="link" to={props.url}>
             <Icon>chevron_left</Icon>
         </Link>
     );

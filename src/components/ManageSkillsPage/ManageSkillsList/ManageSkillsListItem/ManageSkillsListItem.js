@@ -68,7 +68,7 @@ class ManageSkillsListItem extends Component {
                     <h4><TextField name="name" label="name" onChange={this.handleInputChange} value={this.state.edittedSkill.name} />
                     <TextField name="description" label="description" onChange={this.handleInputChange} value={this.state.edittedSkill.description} /></h4>
                     <Button onClick={this.handleSkillEdit} variant="contained" color="primary">confirm edit</Button>
-                    <br /><Button
+                    <br /><br /><Button
                     value={this.props.skill.id}
                     onClick={this.handleToggleEdit}
                     variant="contained"

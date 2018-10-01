@@ -18,7 +18,7 @@ class AddDogForm extends Component {
             name: '',
             breed: '',
             weight: 0,
-            birthday: ''
+            birthday: '2018/10/01'
         }
     }
 
@@ -54,16 +54,16 @@ class AddDogForm extends Component {
                     <InputLabel htmlFor="name-simple">Name</InputLabel>
                     <Input name="name" value={this.state.name} onChange={this.handleInputChange} />
                 </FormControl>
-                <FormControl>
+                <br /> <FormControl>
                     <InputLabel htmlFor="name-helper">Breed</InputLabel>
                     <Input name="breed" value={this.state.breed} onChange={this.handleInputChange} />
                 </FormControl>
-                <FormControl>
+                <br /> <FormControl>
                     <InputLabel htmlFor="name-disabled">Weight</InputLabel>
                     <Input name="weight" value={this.state.weight} onChange={this.handleInputChange} />
-                </FormControl>
-                <br /><TextField type="date" label="birthday" name="birthday" value={this.state.birthday} onChange={this.handleInputChange} />
-                <Button onClick={this.handleAddDogSubmit} variant="extendedFab" color="primary">Add Dog</Button>
+                <br /> </FormControl>
+                <br /> <TextField type="date" label="birthday" name="birthday" value={this.state.birthday} onChange={this.handleInputChange} />
+                <br /> <br /> <Button className="button" onClick={this.handleAddDogSubmit} variant="extendedFab" color="primary">Add Dog</Button>
             </form>
 
             // <form onSubmit={this.handleAddDogSubmit}>

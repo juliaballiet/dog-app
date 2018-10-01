@@ -10,3 +10,20 @@ body {
 .link:visited {
     color: black;
 }
+
+.button {
+    margin: 10px;
+}
+
+.logo {
+    background-color: #037955;
+    color: white;
+    font-family: 'Patrick Hand SC', cursive;
+    margin-top: 150px;
+    height: 150px;
+    width: 150px;
+    margin: 100px auto 30px auto;
+    border-radius: 10px;
+    font-size: 2.2em;
+    box-shadow: 5px 5px 10px grey;
+}
