@@ -22,9 +22,16 @@ Paw Prints is a mobile-first web application built to better track, manage, and 
 
 ## Screen Shots
 
+Login screen:
 ![Screen Shot](public/images/login-page.png)
+
+Example dog profiles:
 ![Screen Shot](public/images/landing-page.png)
+
+Example feeding logs:
 ![Screen Shot](public/images/feeding-log.png)
+
+Example exercise log:
 ![Screen Shot](public/images/exercise-log.png)
 
 ### Completed Features
